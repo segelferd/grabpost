@@ -1,0 +1,1 @@
+{ "name": "grabpost-tools", "private": true, "type": "module", "scripts": { "firefox": "node build-firefox.mjs" }, "devDependencies": { "esbuild": "^0.28.2" } }

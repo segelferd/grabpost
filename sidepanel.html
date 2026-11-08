@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>GrabPost</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      /* Reddit'in gerçek marka rengi */
+      --orange: #FF4500;
+      --orange-hover: #E03D00;
+      --orange-soft: rgba(255, 69, 0, 0.12);
+
+      /* Açık tema (Reddit'in kendi açık tema renkleri) */
+      --bg: #ffffff;
+      --card-bg: #f6f7f8;
+      --border: #edeff1;
+      --text: #1a1a1b;
+      --text-secondary: #7c7c7c;
+      --danger: #ea0027;
+      --success: #46d160;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        /* Koyu tema (Reddit'in kendi koyu tema renkleri) */
+        --bg: #0b1416;
+        --card-bg: #1a1a1b;
+        --border: #343536;
+        --text: #d7dadc;
+        --text-secondary: #818384;
+      }
+    }
+    /* Manuel tema geçişi: kullanıcı üstteki 🌙/☀️ butonuna basınca <html>'e
+       bu class'lar ekleniyor, sistem temasını EZİYOR (override). */
+    html.theme-light {
+      --bg: #ffffff; --card-bg: #f6f7f8; --border: #edeff1;
+      --text: #1a1a1b; --text-secondary: #7c7c7c;
+    }
+    html.theme-dark {
+      --bg: #0b1416; --card-bg: #1a1a1b; --border: #343536;
+      --text: #d7dadc; --text-secondary: #818384;
+    }
+
+    body {
+      font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 22px 20px;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+    h1 { font-size: 19px; margin: 0 0 5px; color: var(--orange); font-weight: 800; }
+    .subtitle { font-size: 12px; color: var(--text-secondary); margin: 0 0 22px; }
+
+    .tab-panel#tab-home { padding-top: 4px; }
+
+    .tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .tab-btn {
+      flex: 1; padding: 11px 4px; font-size: 12px; font-weight: 600;
+      background: none; border: none; border-bottom: 2px solid transparent;
+      color: var(--text-secondary); cursor: pointer;
+    }
+    .tab-btn.active { color: var(--orange); border-bottom-color: var(--orange); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .not-reddit-notice {
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+      padding: 14px; text-align: center; font-size: 12px; color: var(--text-secondary);
+    }
+    .not-reddit-notice span { display: block; margin-bottom: 10px; }
+    .goto-reddit-btn-inline {
+      padding: 7px 16px; font-size: 12px; font-weight: 700; color: #fff;
+      background: var(--orange); border: none; border-radius: 999px; cursor: pointer;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+    .goto-reddit-btn-inline:hover { background: var(--orange-hover); }
+
+    .progress-detail {
+      font-size: 11px; color: var(--text-secondary); text-align: center;
+      margin-top: 8px; min-height: 14px;
+    }
+
+    .bulk-btn {
+      width: 100%; padding: 12px; margin-bottom: 16px;
+      font-size: 13px; font-weight: 700; color: #fff;
+      background: var(--orange); border: none; border-radius: 999px; cursor: pointer;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); /* turuncu üzerinde beyaz yazı daha net görünsün */
+      letter-spacing: 0.01em;
+    }
+    .bulk-btn:hover { background: var(--orange-hover); }
+    .bulk-btn:disabled { background: var(--orange); opacity: 0.45; cursor: not-allowed; }
+    .api-bulk-box { margin: -6px 0 16px; display: flex; flex-direction: column; gap: 8px; }
+    .api-bulk-row { display: flex; gap: 8px; }
+    .api-btn { flex: 1; padding: 9px 10px; font-size: 12px; font-weight: 700; color: var(--orange); background: var(--orange-soft); border: 1px solid var(--orange); border-radius: 999px; cursor: pointer; }
+    .api-btn:hover { background: var(--orange); color: #fff; }
+    .api-btn.secondary { color: var(--text); background: var(--card-bg); border-color: var(--border); }
+    .api-btn.secondary:hover { border-color: var(--orange); color: var(--orange); background: var(--card-bg); }
+    .api-btn:disabled { opacity: .5; cursor: default; }
+    #apiBulkLimit { font-size: 12px; padding: 0 6px; border: 1px solid var(--border); border-radius: 999px; background: var(--card-bg); color: var(--text); }
+    .bulk-progress { font-size: 11px; color: var(--text-secondary); text-align: center; margin: -8px 0 14px; }
+
+    .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .count-badge { font-size: 12px; color: var(--text-secondary); }
+    .clear-btn {
+      font-size: 12px; font-weight: 600; color: var(--danger); background: none;
+      border: 1px solid var(--danger); border-radius: 999px; padding: 4px 10px; cursor: pointer;
+    }
+    .clear-btn:hover { background: var(--danger); color: #fff; }
+
+    .empty-state { text-align: center; color: var(--text-secondary); font-size: 13px; padding: 40px 12px; }
+    ul.history-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    li.history-item {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 8px; padding: 10px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+    }
+    .item-info { min-width: 0; }
+    .item-title {
+      font-size: 13px; font-weight: 600; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; max-width: 220px; color: var(--text);
+    }
+    .item-meta { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+    .remove-btn { flex-shrink: 0; font-size: 11px; color: var(--text-secondary); background: none; border: none; cursor: pointer; padding: 2px 6px; }
+    .remove-btn:hover { color: var(--danger); }
+    /* v1.45.5 abonelik filtre paneli */
+    .sub-item.has-filter-panel { flex-wrap: wrap; }
+    .sub-filter-panel { flex-basis: 100%; display: grid; grid-template-columns: auto 1fr; gap: 6px 8px; align-items: center; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); font-size: 11px; }
+    .sub-filter-panel label { color: var(--text-secondary); }
+    .sub-filter-panel select, .sub-filter-panel input { font-size: 12px; padding: 3px 6px; border: 1px solid var(--border); border-radius: 5px; background: var(--bg); color: var(--text); min-width: 0; }
+    .sub-chip.sub-chip-filter.active { color: #7c3aed; border-color: #7c3aed; background: color-mix(in srgb, #7c3aed 12%, transparent); }
+    .fresh-install { border: 1px solid var(--orange); background: var(--orange-soft); border-radius: 8px; padding: 8px 10px; margin-bottom: 14px; font-size: 12px; }
+    .fresh-install .nc-head { display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: var(--orange); }
+    .fresh-install .fi-lines { margin: 4px 0; line-height: 1.5; color: var(--text); white-space: pre-line; }
+    .naming-conflict { border: 1px solid var(--danger); border-radius: 8px; padding: 8px 10px; margin-bottom: 14px; font-size: 12px; }
+    .naming-conflict .nc-head { display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: var(--danger); }
+    .naming-conflict .nc-body { margin-top: 4px; color: var(--text); line-height: 1.45; white-space: pre-line; }
+    .naming-conflict .nc-example { white-space: pre-line; margin-top: 4px; color: var(--text-secondary); font-size: 11px; word-break: break-all; }
+    .backup-row { display: flex; gap: 8px; margin: 12px 0 4px; }
+    .backup-btn { flex: 1; font-size: 12px; padding: 6px 8px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text); border-radius: 6px; cursor: pointer; }
+    .backup-btn:hover { border-color: var(--orange); color: var(--orange); }
+    /* v1.45.2 Geçmiş: arama, eylem düğmeleri, başarısız indirmeler */
+    .history-search {
+      width: 100%; box-sizing: border-box; padding: 6px 8px; font-size: 13px; margin-bottom: 10px;
+      border: 1px solid var(--border); border-radius: 6px; background: var(--card-bg); color: var(--text);
+    }
+    .history-search:focus { outline: 2px solid var(--orange-soft); border-color: var(--orange); }
+    .item-title.link { cursor: pointer; }
+    .item-title.link:hover { color: var(--orange); text-decoration: underline; }
+    .item-actions { display: flex; gap: 2px; flex-shrink: 0; align-items: center; }
+    .icon-btn { font-size: 12px; background: none; border: none; cursor: pointer; padding: 2px 5px; color: var(--text-secondary); border-radius: 4px; }
+    .icon-btn:hover { color: var(--orange); background: var(--orange-soft); }
+    .failed-box { border: 1px solid var(--danger); border-radius: 8px; padding: 8px 10px; margin-bottom: 12px; }
+    .failed-head { display: flex; justify-content: space-between; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--danger); }
+    .failed-head .head-actions { display: flex; gap: 6px; }
+    .failed-head button { font-size: 11px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text); border-radius: 5px; padding: 2px 8px; cursor: pointer; }
+    .failed-head button:hover { border-color: var(--orange); color: var(--orange); }
+    .failed-list { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; }
+    .failed-list li { display: flex; justify-content: space-between; gap: 6px; font-size: 12px; }
+    .failed-list .err { font-size: 10px; color: var(--text-secondary); word-break: break-all; }
+
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--text); }
+    .field .hint { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+    .field input[type="text"], .field input[type="date"], .field select {
+      width: 100%; box-sizing: border-box; padding: 6px 8px; font-size: 13px;
+      border: 1px solid var(--border); border-radius: 6px; background: var(--card-bg); color: var(--text);
+    }
+    .field input:focus, .field select:focus { outline: 2px solid var(--orange-soft); border-color: var(--orange); }
+    .checkbox-field { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .checkbox-field label { font-size: 13px; color: var(--text); }
+    .checkbox-field input[type="checkbox"] { accent-color: var(--orange); }
+    .save-btn {
+      width: 100%; padding: 8px; font-size: 13px; font-weight: 700; color: #fff;
+      background: var(--orange); border: none; border-radius: 999px; cursor: pointer;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+    .save-btn:hover { background: var(--orange-hover); }
+    .saved-msg { font-size: 12px; color: var(--success); text-align: center; margin-top: 8px; display: none; }
+
+
+    /* İlerleme çubuğu */
+    .progress-wrap { margin-bottom: 10px; display: none; }
+    .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; }
+    .progress-bar-outer { width: 100%; height: 8px; background: var(--border); border-radius: 999px; overflow: hidden; }
+    .progress-bar-inner { height: 100%; width: 0%; background: var(--orange); transition: width 0.2s ease; }
+
+    .stop-btn {
+      width: 100%; padding: 8px; margin-bottom: 10px; display: none;
+      font-size: 12px; font-weight: 600; color: var(--danger); background: none;
+      border: 1px solid var(--danger); border-radius: 999px; cursor: pointer;
+    }
+    .stop-btn:hover { background: var(--danger); color: #fff; }
+
+    /* SSS paneli */
+    .faq-section { margin-top: 18px; border-top: 1px solid #e5e7eb; padding-top: 12px; }
+    .faq-section { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 12px; }
+    .faq-section h2 { font-size: 13px; margin: 0 0 8px; color: var(--text); }
+    details.faq-item { margin-bottom: 6px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; }
+    .changelog-box { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); }
+    .changelog-box h3 { font-size: 13px; font-weight: 600; margin: 0 0 8px; color: var(--text); }
+    .changelog-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; margin-bottom: 6px; }
+    .changelog-item strong { display: block; font-size: 12px; margin-bottom: 3px; color: var(--text); }
+    .changelog-item p { font-size: 11px; color: var(--text-secondary, #888); margin: 0; line-height: 1.4; }
+    details.faq-item summary {
+      padding: 8px 10px; font-size: 12px; font-weight: 600; cursor: pointer;
+      color: var(--text); list-style: none;
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::before { content: "▸ "; color: var(--orange); }
+    details.faq-item[open] summary::before { content: "▾ "; }
+    details.faq-item .faq-answer { padding: 0 10px 10px; font-size: 11.5px; color: var(--text-secondary); line-height: 1.5; }
+
+    .footer { margin-top: 16px; text-align: center; font-size: 11px; color: var(--text-secondary); }
+    .footer a { color: var(--orange); text-decoration: none; }
+
+    .icon-btn {
+      width: 30px; height: 30px; border-radius: 999px; border: 1px solid var(--border);
+      background: var(--card-bg); cursor: pointer; font-size: 14px; display: flex;
+      align-items: center; justify-content: center; padding: 0;
+    }
+    .icon-btn:hover { border-color: var(--orange); }
+
+    .header-select {
+      font-size: 11px; padding: 5px 6px; border-radius: 6px; border: 1px solid var(--border);
+      background: var(--card-bg); color: var(--text); cursor: pointer;
+    }
+
+    .footer-links { margin-top: 16px; text-align: center; }
+    .coffee-btn {
+      display: inline-block; padding: 8px 16px; font-size: 12px; font-weight: 700;
+      background: #FFDD00; color: #1a1a1b; border-radius: 999px; text-decoration: none;
+    }
+    .coffee-btn:hover { opacity: 0.85; }
+
+    /* ÖNEMLİ: .dark-zone bilerek var(--...) DEĞİL, SABİT koyu renkler
+       kullanıyor. Panelin geri kalanı açık/koyu tema arasında geçiş yapsa
+       bile, bu bölge (Buy Me a Coffee + alt bilgi) HER ZAMAN koyu kalır. */
+    .dark-zone {
+      margin-top: 16px;
+      padding: 16px 12px 12px;
+      border-radius: 10px;
+      background: #161617;
+      text-align: center;
+    }
+    .coffee-link { display: inline-block; }
+    .coffee-img { width: 160px; height: auto; display: block; margin: 0 auto; }
+    .dark-zone .footer { margin-top: 12px; color: #9a9a9c; }
+    .dark-zone .footer a { color: #ff6a33; }
+
+    .bulk-hint { font-size: 11px; color: var(--text-secondary); text-align: center; margin: -8px 0 12px; }
+    .section-label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .radio-field { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .radio-field label { font-size: 13px; color: var(--text); }
+    .radio-field input[type="radio"] { accent-color: var(--orange); }
+    .text-link-btn {
+      display: block; width: 100%; text-align: center; background: none; border: none;
+      color: var(--danger); font-size: 12px; font-weight: 600; cursor: pointer;
+      margin: 4px 0 14px; padding: 4px;
+    }
+    .text-link-btn:hover { text-decoration: underline; }
+    .settings-divider { border-top: 1px solid var(--border); margin: 18px 0 14px; }
+    .settings-section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--orange); margin: 16px 0 6px; opacity: 0.85;
+    }
+    .settings-section-label:first-child { margin-top: 0; }
+    .checkbox-field label { cursor: help; } /* ipucu (title) taşıyan etiketlerde imleç bunu ima etsin */
+    .advanced-settings {
+      margin: 10px 0 4px; border: 1px solid var(--border); border-radius: 8px; padding: 2px 10px;
+    }
+    .advanced-settings summary {
+      cursor: pointer; font-size: 12px; font-weight: 600; color: var(--text-secondary); padding: 8px 0; list-style: none;
+    }
+    .advanced-settings summary::-webkit-details-marker { display: none; }
+    .advanced-settings[open] summary { margin-bottom: 2px; }
+    .advanced-settings .checkbox-field { margin: 4px 0 10px; }
+
+    .settings-accordion {
+      margin: 18px 0; border: 1px solid var(--border); border-radius: 10px;
+      background: var(--card-bg); padding: 0;
+    }
+    .settings-accordion summary {
+      padding: 12px 14px; font-size: 13px; font-weight: 700; cursor: pointer;
+      color: var(--text); list-style: none; user-select: none;
+    }
+    .settings-accordion summary::-webkit-details-marker { display: none; }
+    .settings-accordion summary::before { content: "▸ "; color: var(--orange); }
+    .settings-accordion[open] summary::before { content: "▾ "; }
+    .settings-accordion-body { padding: 4px 14px 16px; }
+
+    .sub-item {
+      display: flex; align-items: center;
+      gap: 6px; padding: 10px; background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 8px; margin-bottom: 8px; cursor: grab; transition: opacity 0.15s;
+    }
+    .sub-item.dragging { opacity: 0.4; cursor: grabbing; }
+    .sub-drag-handle { color: var(--text-secondary); font-size: 14px; padding-right: 0; user-select: none; flex-shrink: 0; }
+    .sub-item-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .sub-item-info { flex: 1 1 auto; min-width: 0; }
+    .sub-item-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .sub-item-name:hover { text-decoration: underline; }
+    .sub-item-meta { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+    .sub-item-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .sub-actions-sep { width: 1px; height: 22px; background: var(--border); flex-shrink: 0; }
+    .sub-chip-group { display: flex; gap: 4px; }
+    .sub-chip {
+      flex-shrink: 0; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+      background: var(--surface-2, var(--card-bg)); border: 1.5px solid var(--border); color: var(--text-secondary);
+      border-radius: 8px; cursor: pointer; padding: 0; opacity: 0.5; transition: opacity 0.15s, border-color 0.15s, color 0.15s;
+      line-height: 0;
+    }
+    .sub-chip svg { display: block; }
+    .sub-chip:hover { border-color: var(--text-secondary); }
+    .sub-chip.active { opacity: 1; border-color: var(--orange); color: var(--orange); background: color-mix(in srgb, var(--orange) 12%, transparent); }
+    .sub-chip-auto.active { border-color: #1e88e5; color: #1e88e5; background: color-mix(in srgb, #1e88e5 12%, transparent); }
+    .sub-chip-fav.active { border-color: #f5a623; color: #f5a623; background: color-mix(in srgb, #f5a623 14%, transparent); }
+    .sub-chip-fav.active svg { fill: currentColor; }
+    .sub-remove-btn { background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 14px; padding: 2px 4px; }
+    .sub-remove-btn:hover { color: var(--danger); }
+
+    .archive-manager {
+      margin: 4px 0 14px; border: 1px solid var(--border); border-radius: 10px;
+      background: var(--card-bg); padding: 12px;
+    }
+    .archive-total { font-size: 12px; color: var(--text-secondary); margin-bottom: 10px; text-align: center; }
+    .archive-tabs { display: flex; gap: 6px; margin-bottom: 10px; }
+    .archive-tab-btn {
+      flex: 1; padding: 6px; border-radius: 999px; border: 1px solid var(--border);
+      background: transparent; color: var(--text-secondary); font-size: 12px; font-weight: 600; cursor: pointer;
+    }
+    .archive-tab-btn.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .archive-list { max-height: 220px; overflow-y: auto; }
+    .archive-empty { font-size: 12px; color: var(--text-secondary); text-align: center; padding: 10px; }
+
+    .next-check-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 8px; }
+    .check-now-btn {
+      flex-shrink: 0; font-size: 11px; font-weight: 600; padding: 5px 10px;
+      border-radius: 999px; border: 1px solid var(--orange); background: none; color: var(--orange); cursor: pointer;
+    }
+    .check-now-btn:hover { background: var(--orange); color: #fff; }
+    .check-now-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .toggle-explainer {
+      font-size: 11px; color: var(--text-secondary); background: var(--card-bg);
+      border-radius: 6px; padding: 8px 10px; margin-bottom: 12px; line-height: 1.4;
+    }
+
+    .sub-group-title {
+      font-size: 12px; font-weight: 700; color: var(--text-secondary);
+      text-transform: uppercase; letter-spacing: 0.03em; margin: 14px 0 8px;
+    }
+    .sub-group-title:first-child { margin-top: 0; }
+
+    .sub-pending-badge {
+      display: inline-block; background: var(--orange); color: #fff; font-size: 10px;
+      font-weight: 700; padding: 1px 7px; border-radius: 999px; margin-left: 6px;
+    }
+    .sub-download-btn {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      cursor: not-allowed;
+      color: var(--text-secondary);
+      padding: 0;
+    }
+    .sub-download-btn.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      cursor: pointer;
+    }
+    .sub-download-btn.active:hover { background: var(--orange-hover); }
+    .sub-download-btn:disabled { cursor: not-allowed; opacity: 0.6; }
+  </style>
+</head>
+<body>
+  <div id="mainApp">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <h1>GrabPost</h1>
+        <p class="subtitle" data-i18n="subtitle">Reddit medya indirici</p>
+      </div>
+      <div style="display:flex; gap:6px; align-items:center;">
+        <button id="themeToggleBtn" class="icon-btn" title="Açık/Koyu tema">🌙</button>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="home" style="flex:1;" data-i18n="tabHome">Ana Sayfa</button>
+      <button class="tab-btn" data-tab="history" style="flex:1;" data-i18n="tabHistory">Geçmiş</button>
+      <button class="tab-btn" data-tab="subs" style="flex:1;" data-i18n="tabSubs">Takip</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-home">
+      <div class="fresh-install" id="freshInstallBox" style="display:none;">
+        <div class="nc-head"><span data-i18n="freshInstallTitle">👋 Yeni kurulum algılandı</span><button type="button" id="freshInstallClose" class="remove-btn">✕</button></div>
+        <div class="fi-lines" id="freshInstallLines"></div>
+        <div class="backup-row">
+          <button type="button" class="backup-btn" id="freshImportBtn" data-i18n="freshImportBackup">📥 Yedek dosyasından geri yükle</button>
+          <button type="button" class="backup-btn" id="freshRecoverBtn" data-i18n="freshRecover">🔄 İndirme geçmişinden kurtar</button>
+        </div>
+        <div class="hint" data-i18n="freshImportHint"></div>
+        <input type="file" id="freshImportFile" accept="application/json,.json" style="display:none" />
+        <div class="hint" id="freshMsg" style="display:none;"></div>
+      </div>
+      <div class="naming-conflict" id="namingConflictBox" style="display:none;">
+        <div class="nc-head"><span data-i18n="namingConflictTitle">⚠ Dosyalar klasörsüz iniyor</span><button type="button" id="namingConflictClose" class="remove-btn">✕</button></div>
+        <div class="nc-body" data-i18n="namingConflictBody"></div>
+        <div class="nc-example" id="namingConflictExample"></div>
+      </div>
+      <div class="field" id="redditTabPickerWrap" style="display:none;">
+        <label data-i18n="redditTabPickerLabel">Hangi Reddit sekmesi?</label>
+        <select id="redditTabPicker"></select>
+      </div>
+
+      <button class="bulk-btn" id="bulkBtn" data-i18n="bulkBtn">⬇ Bu Sayfadaki Tüm Medyaları İndir</button>
+      <button class="stop-btn" id="stopBtn" data-i18n="stopBtn">■ Toplu İndirmeyi Durdur</button>
+
+      <!-- v1.46.0 Hızlı mod: sayfayı kaydırmadan Reddit verisinden toplu indirme -->
+      <div class="api-bulk-box" id="apiBulkBox">
+        <div class="api-bulk-row">
+          <button type="button" class="api-btn" id="apiBulkBtn" data-i18n="apiBulkBtn" data-i18n-title="apiBulkHint">⚡ Hızlı toplu indir</button>
+          <select id="apiBulkLimit" data-i18n-title="apiBulkLimitTitle">
+            <option value="50">50</option>
+            <option value="100" selected>100</option>
+            <option value="250">250</option>
+            <option value="500">500</option>
+            <option value="1000">1000</option>
+          </select>
+        </div>
+        <button type="button" class="api-btn secondary" id="savedBulkBtn" data-i18n="savedBulkBtn" data-i18n-title="savedBulkHint">⭐ Kaydedilenlerimi indir</button>
+      </div>
+
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-label">
+          <span id="progressText">0 / 0</span>
+          <span id="progressPercent">%0</span>
+        </div>
+        <div class="progress-bar-outer">
+          <div class="progress-bar-inner" id="progressBarInner"></div>
+        </div>
+        <div class="progress-detail" id="progressDetail"></div>
+      </div>
+
+      <div class="bulk-progress" id="bulkProgress"></div>
+
+      <div class="not-reddit-notice" id="notRedditNotice" style="display:none;">
+        <span data-i18n="notOnReddit">Bu özellik için bir Reddit sekmesi açık olmalı.</span>
+        <button class="goto-reddit-btn-inline" id="gotoRedditBtnInline" data-i18n="gotoReddit">Reddit'e Git</button>
+      </div>
+
+      <!-- ÖNEMLİ: Ayarlar artık ayrı bir SEKME değil, burada açılıp
+           kapanabilen bir bölüm. Klasör/dosya adı, medya türü gibi
+           indirmeyle doğrudan ilgili ayarlar aynı sayfada, hemen
+           erişilebilir olsun istendi. -->
+      <details class="settings-accordion" id="settingsAccordion">
+        <summary data-i18n="settingsToggle">⚙️ Ayarlar</summary>
+        <div class="settings-accordion-body">
+          <div class="settings-section-label" data-i18n="sectionGeneral">🌐 Genel</div>
+          <div class="field">
+            <label data-i18n="languageLabel">Dil</label>
+            <select id="langSelect"></select>
+          </div>
+          <div class="settings-divider"></div>
+
+          <div class="settings-section-label" data-i18n="sectionFolderFiles">📁 Klasör ve Dosya Adı</div>
+          <div class="field">
+            <label for="folderDestination" data-i18n="folderLabel">Klasör Adı Şablonu</label>
+            <input type="text" id="folderDestination" />
+            <div class="hint">
+              <span data-i18n="folderHintShort">{subreddit} {user} {date} {timestamp}</span>
+              <span data-i18n-title="folderHintTooltip" style="cursor:help;" title="">ⓘ</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="filenamePattern" data-i18n="filenameLabel">Dosya Adı Şablonu</label>
+            <input type="text" id="filenamePattern" />
+            <div class="hint" data-i18n="filenameHintShort">{subreddit} {title} {user} {date} {timestamp} {filename}</div>
+          </div>
+          <div class="checkbox-field">
+            <input type="checkbox" id="useGalleryFolders" />
+            <label for="useGalleryFolders" data-i18n="galleryFolders">Galeriler için ayrı alt klasör oluştur</label>
+          </div>
+
+          <div class="settings-section-label" data-i18n="sectionMarking">🏷️ İşaretleme</div>
+          <div class="checkbox-field">
+            <input type="checkbox" id="markDownloaded" />
+            <label for="markDownloaded" data-i18n="markDownloaded">İndirilen gönderileri geçmişte işaretle</label>
+          </div>
+          <div class="checkbox-field">
+            <input type="checkbox" id="showDownloadedMarkers" />
+            <label for="showDownloadedMarkers" data-i18n="showMarkers">Sayfada "✓ İndirildi" rozeti göster</label>
+          </div>
+          <div class="checkbox-field">
+            <input type="checkbox" id="markAsVisited" />
+            <label for="markAsVisited" data-i18n="markVisited" data-i18n-title="markVisitedTitle">İndirilenleri soluk/ziyaret edilmiş göster</label>
+          </div>
+
+          <div class="settings-section-label" data-i18n="sectionTitleOverlay">✨ Başlık Yazısı</div>
+          <div class="checkbox-field">
+            <input type="checkbox" id="embedTitleOnImages" />
+            <label for="embedTitleOnImages" data-i18n="embedTitle">Görsellere gönderi başlığını yazı olarak ekle</label>
+          </div>
+          <div class="checkbox-field">
+            <input type="checkbox" id="embedTitleOnVideos" />
+            <label for="embedTitleOnVideos" data-i18n="embedTitleVideo" data-i18n-title="embedTitleVideoTitle">Videolara başlık yazısı ekle 🧪</label>
+          </div>
+
+          <div class="settings-section-label" data-i18n="sectionDateFilter">📅 Tarih Filtresi</div>
+          <div class="checkbox-field">
+            <input type="checkbox" id="enableDateFilter" />
+            <label for="enableDateFilter" data-i18n="dateFilterLabel">Tarih aralığına göre filtrele</label>
+          </div>
+          <div class="field" id="dateRangeFields" style="display:none;">
+            <label data-i18n="dateFromLabel">Başlangıç Tarihi</label>
+            <input type="date" id="dateFrom" style="margin-bottom:8px;" />
+            <label data-i18n="dateToLabel">Bitiş Tarihi</label>
+            <input type="date" id="dateTo" />
+            <div class="hint" data-i18n="dateHint">Boş bırakırsanız filtre uygulanmaz.</div>
+          </div>
+
+          <div class="settings-divider"></div>
+
+          <div class="settings-section-label" data-i18n="sectionScanning">🔍 Tarama</div>
+          <div class="checkbox-field">
+            <input type="checkbox" id="scrollUpCheckbox" />
+            <label for="scrollUpCheckbox" data-i18n="scrollUpCheckbox">Mevcut gönderiden yukarı doğru kaydır</label>
+          </div>
+          <div class="checkbox-field">
+            <input type="checkbox" id="forceRedownloadCheckbox" />
+            <label for="forceRedownloadCheckbox" data-i18n="forceRedownload" data-i18n-title="forceRedownloadTitle">Daha önce indirilenleri de tekrar indir</label>
+          </div>
+
+          <div class="field">
+            <label for="mediaTypeFilter" data-i18n="mediaToDownload">İndirilecek Medya</label>
+            <select id="mediaTypeFilter">
+              <option value="all" data-i18n="mediaAll">Görsel ve video</option>
+              <option value="images" data-i18n="mediaImages">Sadece görsel</option>
+              <option value="videos" data-i18n="mediaVideos">Sadece video</option>
+            </select>
+          </div>
+
+          <!-- ÖNEMLİ: Daha kompakt/az boğucu bir görünüm için, az kullanılan
+               / deneysel seçenek burada, kendi kapalı alt bölümünde duruyor.
+               Casual bir kullanıcı bunu hiç açmak zorunda değil, ama tek
+               tıkla erişilebilir. -->
+          <details class="advanced-settings">
+            <summary data-i18n="advancedSettingsToggle">⚡ Gelişmiş</summary>
+            <div class="checkbox-field">
+              <input type="checkbox" id="skipDuplicateMedia" />
+              <label for="skipDuplicateMedia" data-i18n="skipDuplicateMedia" data-i18n-title="skipDuplicateMediaTitle">Aynı medyayı tekrar indirme</label>
+            </div>
+            <div class="checkbox-field">
+              <input type="checkbox" id="downloadThroughExtension" />
+              <label for="downloadThroughExtension" data-i18n="downloadThroughExtension" data-i18n-title="downloadThroughExtensionTitle">İndirme yöneticisi (IDM) uyumluluğu</label>
+            </div>
+            <div class="checkbox-field">
+              <input type="checkbox" id="debugLogs" />
+              <label for="debugLogs" data-i18n="debugLogs" data-i18n-title="debugLogsTitle">Geliştirici günlüğü (konsol)</label>
+            </div>
+          </details>
+
+          <button class="save-btn" id="saveBtn" data-i18n="saveBtn">Kaydet</button>
+          <div class="saved-msg" id="savedMsg" data-i18n="savedMsg">✓ Kaydedildi</div>
+
+          <button class="text-link-btn" id="clearProcessedBtn" data-i18n="clearProcessed">İşlenmiş Gönderi Kaydını Temizle</button>
+
+          <div class="backup-row">
+            <button type="button" class="backup-btn" id="exportBackupBtn" data-i18n="backupExport" data-i18n-title="backupExportTitle">💾 Yedeği dışa aktar</button>
+            <button type="button" class="backup-btn" id="importBackupBtn" data-i18n="backupImport" data-i18n-title="backupImportTitle">📥 Yedeği içe aktar</button>
+            <input type="file" id="importBackupFile" accept="application/json,.json" style="display:none" />
+          </div>
+          <div class="checkbox-field" style="margin-top:8px;">
+            <input type="checkbox" id="autoBackup" />
+            <label for="autoBackup" data-i18n="autoBackup" data-i18n-title="autoBackupTitle">Otomatik yedek dosyası</label>
+          </div>
+          <div class="hint" id="lastAutoBackupText" style="margin:-4px 0 6px;"></div>
+          <button type="button" class="backup-btn" id="recoverDownloadsBtn" style="width:100%; margin-top:6px;" data-i18n="recoverDownloads" data-i18n-title="recoverDownloadsTitle">🔄 Chrome indirme geçmişinden kurtar</button>
+          <div class="saved-msg" id="backupMsg" style="display:none;"></div>
+
+          <button class="text-link-btn" id="manageArchiveBtn" data-i18n="manageArchive" style="color: var(--orange);">📂 Arşivi Subreddit/Kullanıcı Bazında Yönet</button>
+          <div class="archive-manager" id="archiveManagerWrap" style="display:none;">
+            <div class="archive-total" id="archiveTotalText"></div>
+            <div class="archive-tabs">
+              <button type="button" class="archive-tab-btn active" id="archiveTabSubredditsBtn" data-i18n="archiveTabSubreddits">Subredditlere göre</button>
+              <button type="button" class="archive-tab-btn" id="archiveTabUsersBtn" data-i18n="archiveTabUsers">Kullanıcılara göre</button>
+            </div>
+            <div class="archive-list" id="archiveListSubreddits"></div>
+            <div class="archive-list" id="archiveListUsers" style="display:none;"></div>
+          </div>
+        </div>
+      </details>
+
+      <div class="faq-section">
+        <h2 data-i18n="faqTitle">Sık Sorulan Sorular</h2>
+
+        <details class="faq-item">
+          <summary data-i18n="faqQ1">Tek bir gönderiyi indirebilir miyim?</summary>
+          <div class="faq-answer" data-i18n="faqA1">Evet. Gönderinin oy/yorum/paylaş satırında beliren turuncu "İndir" butonuna tıklamanız yeterli, toplu indirmeye gerek yok.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary data-i18n="faqQ2">İndirme ayarlarını nasıl özelleştiririm?</summary>
+          <div class="faq-answer" data-i18n="faqA2">Bu bölümden klasör adı şablonu, dosya adı şablonu, galeri klasörü, medya türü filtresi, kaydırma yönü ve tarih aralığını değiştirebilirsiniz. Değişikliklerden sonra "Kaydet"e basmayı unutmayın.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary data-i18n="faqQ3">Dosyalar nereye indiriliyor?</summary>
+          <div class="faq-answer" data-i18n="faqA3">Tarayıcınızın varsayılan indirme klasörünün (genelde "İndirilenler") içine, burada belirlediğiniz klasör adıyla bir alt klasör olarak. "{user}/{subreddit}" gibi "/" kullanarak iç içe klasörler de oluşturabilirsiniz.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary data-i18n="faqQ4">Yeşil "✓ İndirildi" rozeti ne anlama geliyor?</summary>
+          <div class="faq-answer" data-i18n="faqA4">O gönderiyi daha önce bu eklenti ile indirdiğinizi gösterir. Yukarıdan bu rozeti kapatabilir, "Geçmiş" sekmesinden de tüm indirme kayıtlarını görüp silebilirsiniz.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary data-i18n="faqQ5">Arama sonuçlarından indirebilir miyim?</summary>
+          <div class="faq-answer" data-i18n="faqA5">Normal gönderi arama sonuçlarında (Posts sekmesi) buton görünmesi bekleniyor, çünkü aynı gönderi yapısını kullanıyor. Medya (Media) sekmesi gibi farklı bir ızgara görünümü kullanan yerlerde henüz garantili değil — böyle bir yerde çalışmazsa bize bildirin.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary data-i18n="faqQ6">IDM gibi bir indirme yöneticisi "farklı dosya adı" uyarısı veriyor, sorun mu var?</summary>
+          <div class="faq-answer" data-i18n="faqA6">Hayır. IDM gibi indirme yöneticileri de dosya adını kontrol etmeye çalışıyor, biz de klasör/dosya adı şablonlarınızın çalışması için aynı şeyi yapıyoruz — ikisi çakışınca IDM bir uyarı gösteriyor ama dosya yine de doğru yere iniyor. Rahatsız ediyorsa, IDM'nin ayarlarından "gelişmiş tarayıcı entegrasyonu"nu kapatabilirsiniz.</div>
+        </details>
+      </div>
+
+      <div class="changelog-box" id="changelogBox">
+        <h3 data-i18n="changelogTitle">✨ Yenilikler</h3>
+        <div class="changelog-item">
+          <strong data-i18n="changelogItem1Title">🔄 Takip listesi artık senkronize</strong>
+          <p data-i18n="changelogItem1Desc">Chrome hesabınıza giriş yaptıysanız, takip ettiğiniz subreddit/kullanıcı listesi artık tüm cihazlarınıza otomatik olarak senkronize oluyor — tarayıcıyı kaldırıp yeniden yüklediğinizde listeniz kaybolmuyor.</p>
+        </div>
+        <div class="changelog-item">
+          <strong data-i18n="changelogItem2Title">🖼️ Daha güçlü yinelenen medya tespiti</strong>
+          <p data-i18n="changelogItem2Desc">"Aynı medyayı tekrar indirme" ayarı artık görsel içerik bazlı karşılaştırma da yapıyor — aynı fotoğrafın farklı subredditlere paylaşılmış, hafifçe farklı sıkıştırılmış kopyalarını da yakalıyor.</p>
+        </div>
+      </div>
+
+      <div class="dark-zone">
+        <a href="https://buymeacoffee.com/segelferd" target="_blank" class="coffee-link">
+          <img src="assets/bmc-button.png" alt="Buy Me a Coffee" class="coffee-img" />
+        </a>
+        <div class="footer">
+          GrabPost <span id="versionText"></span><br>
+          <a href="#" id="sourceCodeLink" data-i18n="sourceCodeLink">Kaynak Kod</a> · <a href="#" id="rateExtensionLink" data-i18n="rateExtensionLink">Değerlendir</a><br>
+          <span data-i18n="footerDisclaimer">Bu eklenti bağımsız bir projedir, Reddit ile bağlantılı değildir.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-history">
+      <div class="toolbar">
+        <span class="count-badge" id="countBadge"></span>
+        <button class="clear-btn" id="clearBtn" data-i18n="clearAll">Tümünü Temizle</button>
+      </div>
+      <input type="search" class="history-search" id="historySearch" data-i18n-placeholder="historySearchPlaceholder" placeholder="Başlık, subreddit veya kullanıcı ara" />
+      <div id="failedContent"></div>
+      <div id="historyContent"></div>
+    </div>
+
+    <div class="tab-panel" id="tab-subs">
+      <button id="downloadAllPendingBtn" class="bulk-btn" style="display:none; margin-bottom:14px;" data-i18n="downloadAllPending">⬇ Tüm Yeni Medyaları İndir</button>
+      <button id="stopAllPendingBtn" class="stop-btn" style="display:none;" data-i18n="stopBtn">■ Toplu İndirmeyi Durdur</button>
+      <div class="progress-wrap" id="pendingProgressWrap">
+        <div class="progress-label">
+          <span id="pendingProgressText">0 / 0</span>
+          <span id="pendingProgressPercent">%0</span>
+        </div>
+        <div class="progress-bar-outer">
+          <div class="progress-bar-inner" id="pendingProgressBarInner"></div>
+        </div>
+        <div class="progress-detail" id="pendingProgressDetail"></div>
+      </div>
+
+      <div class="settings-section-label" data-i18n="sectionAddSub">➕ Yeni Ekle</div>
+      <div class="field">
+        <label data-i18n="addSubLabel">Yeni Takip Ekle</label>
+        <div style="display:flex; gap:6px;">
+          <select id="subTypeSelect" style="width:auto;">
+            <option value="subreddit">r/</option>
+            <option value="user">u/</option>
+          </select>
+          <input type="text" id="subNameInput" data-i18n-placeholder="subNamePlaceholder" placeholder="subreddit veya kullanıcı adı" style="flex:1;" />
+          <button type="button" id="pasteSubBtn" class="icon-btn" style="width:auto; padding:0 8px;" data-i18n-title="pasteBtnTitle" title="Panodan yapıştır">📋</button>
+          <button id="addSubBtn" class="icon-btn" style="width:auto; padding:0 12px;" data-i18n="addBtn">Ekle</button>
+        </div>
+        <button type="button" class="backup-btn" id="addCurrentPageBtn" style="display:none; width:100%; margin-top:8px;"></button>
+        <div class="backup-row">
+          <button type="button" class="backup-btn" id="exportFollowBtn" data-i18n="followExport" data-i18n-title="followExportTitle">⬆ Listeyi dışa aktar</button>
+          <button type="button" class="backup-btn" id="importFollowBtn" data-i18n="followImport" data-i18n-title="followImportTitle">⬇ Listeyi içe aktar</button>
+          <input type="file" id="importFollowFile" accept=".json,.txt,.csv,application/json,text/plain" style="display:none" />
+        </div>
+        <div class="hint" id="followMsg" style="display:none;"></div>
+      </div>
+
+      <div class="settings-section-label" data-i18n="sectionCheckSettings">⏱️ Kontrol Ayarları</div>
+      <div class="field">
+        <label data-i18n="checkIntervalLabel">Kontrol Sıklığı</label>
+        <input type="range" id="intervalSlider" min="0" max="6" step="1" style="width:100%; accent-color: var(--orange);" />
+        <div class="hint" id="intervalValueText" style="text-align:center; font-weight:600;"></div>
+      </div>
+      <div class="field">
+        <label for="favoriteInterval" data-i18n="favoriteIntervalLabel">★ Favori kontrol sıklığı</label>
+        <select id="favoriteInterval">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="30">30</option>
+          <option value="60">60</option>
+        </select>
+        <div class="hint" id="favoriteInfo"></div>
+      </div>
+
+      <div class="next-check-row">
+        <span id="nextCheckText" class="hint"></span>
+        <button id="checkNowBtn" class="check-now-btn" data-i18n="checkNowBtn">🔄 Şimdi Kontrol Et</button>
+      </div>
+
+      <div class="settings-section-label" data-i18n="sectionNotifTest">🔔 Bildirim</div>
+      <button id="testNotifBtn" class="text-link-btn" style="color: var(--orange);" data-i18n="testNotifBtn">🔔 Test Bildirimi Gönder</button>
+      <div class="hint" id="testNotifStatus" style="text-align:center; margin: -10px 0 12px;"></div>
+
+      <div class="toggle-explainer" data-i18n="toggleExplainer">Sağdaki anahtar: bu kaynağın otomatik olarak kontrol edilip edilmeyeceğini açar/kapatır. İndirme yine de bildirimden onayınıza bağlıdır.</div>
+
+      <div id="subsListContainer"></div>
+    </div>
+  </div>
+
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>

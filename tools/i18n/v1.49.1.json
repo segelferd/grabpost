@@ -1,0 +1,36 @@
+{
+  "inPageExtUpdated": {
+    "en": "Extension updated, reload the page",
+    "tr": "Eklenti güncellendi, sayfayı yenileyin",
+    "de": "Erweiterung aktualisiert, Seite neu laden",
+    "fr": "Extension mise à jour, rechargez la page",
+    "es": "Extensión actualizada, recarga la página",
+    "pt_br": "Extensão atualizada, recarregue a página",
+    "ar": "تم تحديث الإضافة، أعد تحميل الصفحة",
+    "ja": "拡張機能が更新されました。ページを再読み込みしてください",
+    "ko": "확장 프로그램이 업데이트되었습니다. 페이지를 새로고침하세요",
+    "ru": "Расширение обновлено, перезагрузите страницу",
+    "it": "Estensione aggiornata, ricarica la pagina",
+    "zh_cn": "扩展已更新，请刷新页面",
+    "cs": "Rozšíření bylo aktualizováno, obnovte stránku",
+    "hi": "एक्सटेंशन अपडेट हुआ, पेज रीलोड करें",
+    "id": "Ekstensi diperbarui, muat ulang halaman"
+  },
+  "inPageTimeout": {
+    "en": "No response, try again",
+    "tr": "Yanıt gelmedi, tekrar dene",
+    "de": "Keine Antwort, erneut versuchen",
+    "fr": "Pas de réponse, réessayez",
+    "es": "Sin respuesta, inténtalo de nuevo",
+    "pt_br": "Sem resposta, tente novamente",
+    "ar": "لا يوجد رد، حاول مرة أخرى",
+    "ja": "応答がありません。もう一度お試しください",
+    "ko": "응답이 없습니다. 다시 시도하세요",
+    "ru": "Нет ответа, попробуйте снова",
+    "it": "Nessuna risposta, riprova",
+    "zh_cn": "无响应，请重试",
+    "cs": "Žádná odpověď, zkuste to znovu",
+    "hi": "कोई जवाब नहीं, फिर से कोशिश करें",
+    "id": "Tidak ada respons, coba lagi"
+  }
+}

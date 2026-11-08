@@ -1,0 +1,6 @@
+/* content.css — bilerek büyük ölçüde boş bırakıldı.
+   Buton stilleri artık burada değil, src/content.js içindeki
+   applyButtonState() fonksiyonunda satır içi (inline) olarak uygulanıyor.
+   Sebep: buton bazen Reddit'in kendi shadow DOM'unun içine ekleniyor
+   (action-row bulunduğunda) ve bu dosya sadece ana sayfaya enjekte
+   edildiği için oraya ulaşamıyor. Inline stil her yerde çalışır. */

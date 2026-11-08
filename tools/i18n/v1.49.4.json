@@ -1,0 +1,36 @@
+{
+  "forceRedownload": {
+    "en": "Also re-download posts downloaded before",
+    "tr": "Daha önce indirilenleri de tekrar indir",
+    "de": "Bereits heruntergeladene Beiträge erneut laden",
+    "fr": "Retélécharger aussi les publications déjà téléchargées",
+    "es": "Volver a descargar también las publicaciones ya descargadas",
+    "pt_br": "Baixar de novo também as publicações já baixadas",
+    "ar": "أعد تنزيل المنشورات التي نُزّلت سابقًا أيضًا",
+    "ja": "ダウンロード済みの投稿も再ダウンロード",
+    "ko": "이미 다운로드한 게시물도 다시 다운로드",
+    "ru": "Скачивать заново и уже скачанные посты",
+    "it": "Riscarica anche i post già scaricati",
+    "zh_cn": "同时重新下载已下载过的帖子",
+    "cs": "Znovu stáhnout i dříve stažené příspěvky",
+    "hi": "पहले डाउनलोड की गई पोस्ट भी फिर से डाउनलोड करें",
+    "id": "Unduh ulang juga postingan yang pernah diunduh"
+  },
+  "forceRedownloadTitle": {
+    "en": "For bulk download (page and fast mode): posts marked as downloaded are not skipped and the scan does not stop at already-downloaded posts. Turn it off afterwards.",
+    "tr": "Toplu indirme için (sayfa ve hızlı mod): indirildi olarak işaretli gönderiler atlanmaz, tarama daha önce indirilmiş gönderilerde durmaz. İşiniz bitince kapatın.",
+    "de": "Für den Massendownload (Seite und Schnellmodus): als heruntergeladen markierte Beiträge werden nicht übersprungen und der Scan stoppt nicht bei bereits geladenen Beiträgen. Danach wieder ausschalten.",
+    "fr": "Pour le téléchargement groupé (page et mode rapide) : les publications marquées comme téléchargées ne sont pas ignorées et l'analyse ne s'arrête pas aux publications déjà téléchargées. Désactivez-le ensuite.",
+    "es": "Para la descarga masiva (página y modo rápido): las publicaciones marcadas como descargadas no se omiten y el escaneo no se detiene en las ya descargadas. Desactívalo después.",
+    "pt_br": "Para o download em massa (página e modo rápido): publicações marcadas como baixadas não são puladas e a varredura não para nas já baixadas. Desative depois.",
+    "ar": "للتنزيل الجماعي (الصفحة والوضع السريع): لا يتم تخطي المنشورات المعلّمة كمنزّلة ولا يتوقف الفحص عند المنشورات المنزّلة سابقًا. أوقفه بعد الانتهاء.",
+    "ja": "一括ダウンロード用（ページと高速モード）：ダウンロード済みの投稿もスキップせず、ダウンロード済みの投稿でスキャンを止めません。終わったらオフにしてください。",
+    "ko": "일괄 다운로드용(페이지 및 빠른 모드): 다운로드됨으로 표시된 게시물을 건너뛰지 않고, 이미 다운로드한 게시물에서 스캔을 멈추지 않습니다. 끝나면 끄세요.",
+    "ru": "Для массовой загрузки (страница и быстрый режим): посты с отметкой «скачано» не пропускаются, и сканирование не останавливается на уже скачанных. После использования выключите.",
+    "it": "Per il download di massa (pagina e modalità rapida): i post segnati come scaricati non vengono saltati e la scansione non si ferma su quelli già scaricati. Disattivalo dopo.",
+    "zh_cn": "用于批量下载（页面和快速模式）：不跳过已标记为下载的帖子，扫描遇到已下载的帖子也不会停止。用完后请关闭。",
+    "cs": "Pro hromadné stahování (stránka a rychlý režim): příspěvky označené jako stažené se nepřeskakují a skenování se u již stažených nezastaví. Poté vypněte.",
+    "hi": "बल्क डाउनलोड के लिए (पेज और तेज़ मोड): डाउनलोड के रूप में चिह्नित पोस्ट छोड़ी नहीं जातीं और स्कैन पहले डाउनलोड की गई पोस्ट पर नहीं रुकता। काम के बाद बंद कर दें।",
+    "id": "Untuk unduhan massal (halaman dan mode cepat): postingan yang ditandai terunduh tidak dilewati dan pemindaian tidak berhenti pada yang sudah diunduh. Matikan setelahnya."
+  }
+}

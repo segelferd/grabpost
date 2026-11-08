@@ -1,0 +1,36 @@
+{
+  "apiBulkRateLimited": {
+    "en": "Reddit is temporarily limiting requests. Wait a few minutes and try again.",
+    "tr": "Reddit istekleri geçici olarak kısıtlıyor. Birkaç dakika bekleyip tekrar deneyin.",
+    "de": "Reddit begrenzt Anfragen vorübergehend. Warte ein paar Minuten und versuche es erneut.",
+    "fr": "Reddit limite temporairement les requêtes. Attendez quelques minutes puis réessayez.",
+    "es": "Reddit está limitando las solicitudes temporalmente. Espera unos minutos e inténtalo de nuevo.",
+    "pt_br": "O Reddit está limitando as solicitações temporariamente. Aguarde alguns minutos e tente novamente.",
+    "ar": "يقيّد Reddit الطلبات مؤقتًا. انتظر بضع دقائق ثم حاول مرة أخرى.",
+    "ja": "Reddit が一時的にリクエストを制限しています。数分待ってから再試行してください。",
+    "ko": "Reddit이 일시적으로 요청을 제한하고 있습니다. 몇 분 후 다시 시도하세요.",
+    "ru": "Reddit временно ограничивает запросы. Подождите несколько минут и повторите попытку.",
+    "it": "Reddit sta limitando temporaneamente le richieste. Attendi qualche minuto e riprova.",
+    "zh_cn": "Reddit 正在暂时限制请求。请等待几分钟后重试。",
+    "cs": "Reddit dočasně omezuje požadavky. Počkejte několik minut a zkuste to znovu.",
+    "hi": "Reddit अस्थायी रूप से अनुरोध सीमित कर रहा है। कुछ मिनट रुककर फिर कोशिश करें।",
+    "id": "Reddit membatasi permintaan untuk sementara. Tunggu beberapa menit lalu coba lagi."
+  },
+  "subRateLimited": {
+    "en": "Reddit limited requests, will retry on the next check",
+    "tr": "Reddit istekleri kısıtladı, bir sonraki kontrolde tekrar denenecek",
+    "de": "Reddit hat Anfragen begrenzt, nächste Prüfung versucht es erneut",
+    "fr": "Reddit a limité les requêtes, nouvel essai à la prochaine vérification",
+    "es": "Reddit limitó las solicitudes, se reintentará en la próxima comprobación",
+    "pt_br": "O Reddit limitou as solicitações, nova tentativa na próxima verificação",
+    "ar": "قيّد Reddit الطلبات، ستتم إعادة المحاولة في الفحص التالي",
+    "ja": "Reddit がリクエストを制限しました。次回のチェックで再試行します",
+    "ko": "Reddit이 요청을 제한했습니다. 다음 확인 때 다시 시도합니다",
+    "ru": "Reddit ограничил запросы, повтор при следующей проверке",
+    "it": "Reddit ha limitato le richieste, nuovo tentativo al prossimo controllo",
+    "zh_cn": "Reddit 限制了请求，将在下次检查时重试",
+    "cs": "Reddit omezil požadavky, zkusí se to při další kontrole",
+    "hi": "Reddit ने अनुरोध सीमित किए, अगली जाँच में फिर कोशिश होगी",
+    "id": "Reddit membatasi permintaan, akan dicoba lagi pada pemeriksaan berikutnya"
+  }
+}

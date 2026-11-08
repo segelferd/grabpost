@@ -72,6 +72,10 @@ Other tools:
 - `tools/i18n-add.py` merges new UI strings (`tools/i18n/*.json`, 15 languages each) into `locales.js`
 - `tools/site/` builds the website in `docs/` (`python3 tools/site/build_site.py`)
 
+## License
+
+[PolyForm Noncommercial License 1.0.0](LICENSE): free to use, study, change and share for any noncommercial purpose. Commercial use is not permitted. Third-party components in `libs/` (ffmpeg.wasm) and the website font keep their own licenses, see [NOTICE.md](NOTICE.md).
+
 ## Credits
 
 FFmpeg (WebAssembly build, `libs/`), Geist font (SIL Open Font License, website only). See [NOTICE.md](NOTICE.md).

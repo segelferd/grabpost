@@ -1,6 +1,10 @@
 GrabPost - Downloader for Reddit
 Third-Party Notice
 
+GrabPost's own code is licensed under the PolyForm Noncommercial License
+1.0.0 (see LICENSE). The third-party components listed below keep their own
+licenses.
+
 This extension was independently developed. Its feature set was inspired by
 the general category of open-source Reddit media downloader extensions,
 including the publicly available "redditgrab" project

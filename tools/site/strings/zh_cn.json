@@ -36,7 +36,7 @@
   "p1": "无分析、无追踪、无需账号",
   "p2": "只与 Reddit 及其媒体托管网站通信",
   "p3": "历史记录和设置都留在你的浏览器里",
-  "p4": "在 GitHub 上开源",
+  "p4": "源代码公开在 GitHub 上",
   "install_h": "一分钟装好",
   "install_sub": "GrabPost 还没有上架 Chrome 网上应用店，所以需要手动安装。支持 Chrome、Edge、Brave、Opera 等基于 Chromium 的浏览器。",
   "s1": "从 GitHub 下载最新的 <b>grabpost-v…zip</b>，解压到一个会长期保留的文件夹。",

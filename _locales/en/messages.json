@@ -1,0 +1,11 @@
+{
+  "appName": {
+    "message": "GrabPost - Downloader for Reddit"
+  },
+  "appDescription": {
+    "message": "One-click Download button on Reddit posts: images, galleries, videos with sound, Redgifs. Bulk download, follow subreddits."
+  },
+  "cmdFocused": {
+    "message": "Download the post in the middle of the screen"
+  }
+}

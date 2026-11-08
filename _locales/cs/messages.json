@@ -1,0 +1,11 @@
+{
+  "appName": {
+    "message": "GrabPost - stahovač pro Reddit"
+  },
+  "appDescription": {
+    "message": "Tlačítko Stáhnout u příspěvků na Redditu: obrázky, galerie, videa se zvukem, Redgifs. Hromadné stahování, sledování."
+  },
+  "cmdFocused": {
+    "message": "Stáhnout příspěvek uprostřed obrazovky"
+  }
+}

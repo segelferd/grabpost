@@ -1,0 +1,11 @@
+{
+  "appName": {
+    "message": "GrabPost - Downloader für Reddit"
+  },
+  "appDescription": {
+    "message": "Download-Button an Reddit-Beiträgen: Bilder, Galerien, Videos mit Ton, Redgifs. Massen-Download, Subreddits folgen."
+  },
+  "cmdFocused": {
+    "message": "Den Beitrag in der Bildschirmmitte herunterladen"
+  }
+}

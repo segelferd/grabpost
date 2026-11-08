@@ -1,0 +1,11 @@
+{
+  "appName": {
+    "message": "GrabPost - загрузчик для Reddit"
+  },
+  "appDescription": {
+    "message": "Кнопка «Скачать» на постах Reddit: изображения, галереи, видео со звуком, Redgifs. Массовая загрузка, подписки."
+  },
+  "cmdFocused": {
+    "message": "Скачать пост в центре экрана"
+  }
+}

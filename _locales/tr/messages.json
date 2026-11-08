@@ -1,0 +1,11 @@
+{
+  "appName": {
+    "message": "GrabPost - Reddit İndirici"
+  },
+  "appDescription": {
+    "message": "Reddit gönderilerine tek tıkla İndir düğmesi: görsel, galeri, sesli video, Redgifs. Toplu indirme, subreddit takibi."
+  },
+  "cmdFocused": {
+    "message": "Ekranın ortasındaki gönderiyi indir"
+  }
+}

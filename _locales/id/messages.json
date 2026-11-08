@@ -1,0 +1,11 @@
+{
+  "appName": {
+    "message": "GrabPost - Pengunduh untuk Reddit"
+  },
+  "appDescription": {
+    "message": "Tombol Unduh di postingan Reddit: gambar, galeri, video bersuara, Redgifs. Unduh massal, ikuti subreddit."
+  },
+  "cmdFocused": {
+    "message": "Unduh postingan di tengah layar"
+  }
+}

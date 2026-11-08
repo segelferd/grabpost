@@ -2,7 +2,7 @@
 
 **Browser extension that adds a Download button to every Reddit post. Images, galleries, videos with sound, GIFs, Redgifs and Imgur links; bulk download of whole subreddits and profiles; follow sources and get new posts automatically. Chrome, Edge, Brave, Opera (Chromium) and Firefox.**
 
-🌐 **Website:** [segelferd.github.io/grabpost](https://segelferd.github.io/grabpost/) · **Current version:** 1.50.3 · [Changelog](CHANGELOG.md) · [Privacy policy](https://segelferd.github.io/grabpost/privacy/)
+🌐 **Website:** [segelferd.github.io/grabpost](https://segelferd.github.io/grabpost/) · **Current version:** 1.50.4 · [Changelog](CHANGELOG.md) · [Privacy policy](https://segelferd.github.io/grabpost/privacy/)
 
 ## Features
 

@@ -1,0 +1,11 @@
+{
+  "appName": {
+    "message": "GrabPost - Downloader per Reddit"
+  },
+  "appDescription": {
+    "message": "Pulsante Scarica sui post di Reddit: immagini, gallerie, video con audio, Redgifs. Download in blocco, segui i subreddit."
+  },
+  "cmdFocused": {
+    "message": "Scarica il post al centro dello schermo"
+  }
+}

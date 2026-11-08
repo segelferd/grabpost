@@ -1,0 +1,11 @@
+{
+  "appName": {
+    "message": "GrabPost - Reddit 다운로더"
+  },
+  "appDescription": {
+    "message": "Reddit 게시물에 원클릭 다운로드 버튼: 이미지, 갤러리, 소리 있는 동영상, Redgifs. 일괄 다운로드, 서브레딧 팔로우."
+  },
+  "cmdFocused": {
+    "message": "화면 가운데 게시물 다운로드"
+  }
+}

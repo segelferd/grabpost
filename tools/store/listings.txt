@@ -1,0 +1,599 @@
+=== en | English
+SUMMARY: One-click Download button on every Reddit post: images, galleries, videos with sound, GIFs, Redgifs and Imgur. Bulk-download subreddits and profiles, follow sources and get new posts automatically. No tracking.
+---
+GrabPost adds an orange Download button to every Reddit post. One click saves the post's images, the whole gallery, or the video with its sound.
+
+ONE CLICK ON EVERY POST
+• Works in feeds, profiles, search results and single post pages, on new and old Reddit
+• Images, galleries, GIFs, Redgifs and Imgur links
+• Videos with sound: Reddit keeps the audio in a separate file; GrabPost finds it and merges it inside your browser
+• Images in comments, a right-click Download entry, and Alt+Shift+D for the post in the middle of the screen
+
+BULK DOWNLOAD
+• Fast mode reads a subreddit, profile, multireddit or search straight from Reddit's data, without scrolling
+• Skips what you already have and stops at posts you downloaded before
+• Download your saved posts in one go (when logged in)
+• Filter by media type and date range
+• When Reddit asks for a break, GrabPost waits as long as asked and carries on
+
+FOLLOW SUBREDDITS AND USERS
+• Scheduled checks with desktop notifications, optional automatic download
+• Filters per source: media type and keywords
+• Up to 10 favorites checked as often as every 5 minutes
+• Missed checks catch up a couple of minutes after the browser starts
+• Export and import your list
+
+FILES AND HISTORY
+• Folder and file name templates: {subreddit}, {user}, {date}, {title} and more
+• Duplicate detection by image content, not just the address
+• Searchable history; posts you already have are marked on Reddit
+• Works next to download managers such as IDM without losing your folder names
+• Automatic backups, so a reinstall does not wipe your history
+
+PRIVACY
+No analytics, no tracking, no account, no servers of our own. GrabPost talks only to Reddit and the sites that host the media you download. Settings, follow list and history stay in your browser.
+
+15 languages: English, Türkçe, Deutsch, Français, Español, Português (Brasil), Italiano, Русский, Čeština, العربية, हिन्दी, Bahasa Indonesia, 日本語, 한국어, 简体中文.
+
+Free. Source code: https://github.com/segelferd/grabpost
+GrabPost is an independent project and is not affiliated with Reddit.
+
+=== tr | Türkçe
+SUMMARY: Her Reddit gönderisine tek tıkla İndir düğmesi: görseller, galeriler, sesli videolar, GIF, Redgifs ve Imgur. Subreddit ve profilleri toplu indirin, kaynakları takip edin, yeni gönderiler kendiliğinden gelsin. Takip yok.
+---
+GrabPost her Reddit gönderisine turuncu bir İndir düğmesi ekler. Tek tıkla gönderinin görselleri, galerinin tamamı ya da video sesiyle birlikte kaydedilir.
+
+HER GÖNDERİDE TEK TIK
+• Akışlarda, profillerde, arama sonuçlarında ve gönderi sayfalarında; yeni ve eski Reddit'te çalışır
+• Görseller, galeriler, GIF, Redgifs ve Imgur bağlantıları
+• Sesli videolar: Reddit sesi ayrı bir dosyada tutar; GrabPost onu bulur ve tarayıcınızın içinde videoyla birleştirir
+• Yorumlardaki görseller, sağ tık menüsünde İndir, ekranın ortasındaki gönderi için Alt+Shift+D
+
+TOPLU İNDİRME
+• Hızlı mod subreddit, profil, multireddit veya aramayı kaydırmadan doğrudan Reddit verisinden okur
+• Elinizde olanları atlar, daha önce indirdiğiniz gönderilere gelince durur
+• Kaydettiğiniz gönderileri tek seferde indirin (oturum açıkken)
+• Medya türüne ve tarih aralığına göre filtre
+• Reddit ara vermesini istediğinde GrabPost istenen süre kadar bekler ve devam eder
+
+SUBREDDIT VE KULLANICI TAKİBİ
+• Zamanlanmış kontroller, masaüstü bildirimleri, isteğe bağlı otomatik indirme
+• Kaynak bazında filtre: medya türü ve anahtar kelime
+• En fazla 10 favori, 5 dakikaya kadar sık kontrol
+• Kaçan kontroller tarayıcı açıldıktan birkaç dakika sonra kendiliğinden yapılır
+• Listeyi dışa ve içe aktarma
+
+DOSYALAR VE GEÇMİŞ
+• Klasör ve dosya adı şablonları: {subreddit}, {user}, {date}, {title} ve diğerleri
+• Kopya algılama adrese göre değil görselin içeriğine göre
+• Aranabilir geçmiş; elinizdeki gönderiler Reddit'te işaretlenir
+• IDM gibi indirme yöneticileriyle birlikte çalışır, klasör adlarınız kaybolmaz
+• Otomatik yedekler; yeniden kurulumda geçmişiniz silinmez
+
+GİZLİLİK
+Analiz yok, takip yok, hesap yok, kendi sunucumuz yok. GrabPost yalnızca Reddit ve indirdiğiniz medyanın bulunduğu sitelerle konuşur. Ayarlar, takip listesi ve geçmiş tarayıcınızda kalır.
+
+15 dil: English, Türkçe, Deutsch, Français, Español, Português (Brasil), Italiano, Русский, Čeština, العربية, हिन्दी, Bahasa Indonesia, 日本語, 한국어, 简体中文.
+
+Ücretsiz. Kaynak kodu: https://github.com/segelferd/grabpost
+GrabPost bağımsız bir projedir, Reddit ile bağlantısı yoktur.
+
+=== de | Deutsch
+SUMMARY: Download-Button mit einem Klick an jedem Reddit-Beitrag: Bilder, Galerien, Videos mit Ton, GIFs, Redgifs und Imgur. Subreddits und Profile gesammelt laden, Quellen folgen, neue Beiträge kommen von selbst. Kein Tracking.
+---
+GrabPost fügt jedem Reddit-Beitrag einen orangefarbenen Download-Button hinzu. Ein Klick speichert die Bilder, die ganze Galerie oder das Video mit Ton.
+
+EIN KLICK AN JEDEM BEITRAG
+• In Feeds, Profilen, Suchergebnissen und auf Beitragsseiten, im neuen und alten Reddit
+• Bilder, Galerien, GIFs, Redgifs und Imgur-Links
+• Videos mit Ton: Reddit speichert den Ton in einer eigenen Datei; GrabPost findet sie und fügt sie direkt im Browser zusammen
+• Bilder in Kommentaren, Download im Rechtsklick-Menü und Alt+Shift+D für den Beitrag in der Bildschirmmitte
+
+MASSEN-DOWNLOAD
+• Der Schnellmodus liest Subreddit, Profil, Multireddit oder Suche direkt aus Reddits Daten, ohne Scrollen
+• Überspringt, was du schon hast, und stoppt bei bereits geladenen Beiträgen
+• Gespeicherte Beiträge in einem Rutsch laden (angemeldet)
+• Filter nach Medientyp und Zeitraum
+• Wenn Reddit um eine Pause bittet, wartet GrabPost genau so lange und macht weiter
+
+SUBREDDITS UND NUTZERN FOLGEN
+• Geplante Prüfungen mit Desktop-Benachrichtigungen, auf Wunsch automatischer Download
+• Filter pro Quelle: Medientyp und Stichwörter
+• Bis zu 10 Favoriten, die bis zu alle 5 Minuten geprüft werden
+• Verpasste Prüfungen werden ein paar Minuten nach dem Browserstart nachgeholt
+• Liste exportieren und importieren
+
+DATEIEN UND VERLAUF
+• Vorlagen für Ordner und Dateinamen: {subreddit}, {user}, {date}, {title} und mehr
+• Duplikaterkennung nach Bildinhalt, nicht nur nach Adresse
+• Durchsuchbarer Verlauf; vorhandene Beiträge werden auf Reddit markiert
+• Funktioniert neben Download-Managern wie IDM, ohne dass Ordnernamen verloren gehen
+• Automatische Sicherungen, damit eine Neuinstallation den Verlauf nicht löscht
+
+DATENSCHUTZ
+Keine Analyse, kein Tracking, kein Konto, keine eigenen Server. GrabPost spricht nur mit Reddit und den Seiten, die die Medien hosten. Einstellungen, Folgeliste und Verlauf bleiben in deinem Browser.
+
+15 Sprachen: English, Türkçe, Deutsch, Français, Español, Português (Brasil), Italiano, Русский, Čeština, العربية, हिन्दी, Bahasa Indonesia, 日本語, 한국어, 简体中文.
+
+Kostenlos. Quellcode: https://github.com/segelferd/grabpost
+GrabPost ist ein unabhängiges Projekt und steht in keiner Verbindung zu Reddit.
+
+=== fr | Français
+SUMMARY: Un bouton Télécharger sur chaque publication Reddit : images, galeries, vidéos avec le son, GIF, Redgifs et Imgur. Téléchargez des subreddits et profils entiers, suivez des sources et recevez les nouveaux posts. Sans pistage.
+---
+GrabPost ajoute un bouton Télécharger orange à chaque publication Reddit. Un clic enregistre les images, la galerie complète ou la vidéo avec son son.
+
+UN CLIC SUR CHAQUE PUBLICATION
+• Dans les fils, les profils, les résultats de recherche et les pages de publication, sur le nouveau et l'ancien Reddit
+• Images, galeries, GIF, Redgifs et liens Imgur
+• Vidéos avec le son : Reddit garde l'audio dans un fichier séparé ; GrabPost le trouve et l'assemble directement dans votre navigateur
+• Images dans les commentaires, Télécharger dans le menu du clic droit, et Alt+Shift+D pour la publication au milieu de l'écran
+
+TÉLÉCHARGEMENT EN MASSE
+• Le mode rapide lit un subreddit, un profil, un multireddit ou une recherche directement dans les données de Reddit, sans défilement
+• Ignore ce que vous avez déjà et s'arrête aux publications déjà téléchargées
+• Vos publications enregistrées en une fois (connecté)
+• Filtre par type de média et par période
+• Quand Reddit demande une pause, GrabPost attend le temps demandé puis continue
+
+SUIVRE DES SUBREDDITS ET DES UTILISATEURS
+• Vérifications planifiées, notifications de bureau, téléchargement automatique en option
+• Filtres par source : type de média et mots-clés
+• Jusqu'à 10 favoris vérifiés jusqu'à toutes les 5 minutes
+• Les vérifications manquées sont rattrapées quelques minutes après le démarrage du navigateur
+• Export et import de la liste
+
+FICHIERS ET HISTORIQUE
+• Modèles de dossiers et de noms de fichiers : {subreddit}, {user}, {date}, {title} et d'autres
+• Détection des doublons d'après le contenu de l'image, pas seulement l'adresse
+• Historique avec recherche ; les publications déjà enregistrées sont signalées sur Reddit
+• Fonctionne à côté des gestionnaires de téléchargement comme IDM sans perdre vos noms de dossiers
+• Sauvegardes automatiques : une réinstallation n'efface pas votre historique
+
+CONFIDENTIALITÉ
+Aucune analyse, aucun pistage, aucun compte, aucun serveur à nous. GrabPost ne communique qu'avec Reddit et les sites qui hébergent les médias téléchargés. Réglages, liste de suivi et historique restent dans votre navigateur.
+
+15 langues : English, Türkçe, Deutsch, Français, Español, Português (Brasil), Italiano, Русский, Čeština, العربية, हिन्दी, Bahasa Indonesia, 日本語, 한국어, 简体中文.
+
+Gratuit. Code source : https://github.com/segelferd/grabpost
+GrabPost est un projet indépendant, sans lien avec Reddit.
+
+=== es | Español
+SUMMARY: Un botón Descargar en cada publicación de Reddit: imágenes, galerías, vídeos con sonido, GIF, Redgifs e Imgur. Descarga subreddits y perfiles completos, sigue fuentes y recibe las publicaciones nuevas. Sin rastreo.
+---
+GrabPost añade un botón Descargar naranja a cada publicación de Reddit. Un clic guarda las imágenes, la galería completa o el vídeo con su sonido.
+
+UN CLIC EN CADA PUBLICACIÓN
+• En feeds, perfiles, resultados de búsqueda y páginas de publicación, en el Reddit nuevo y en el antiguo
+• Imágenes, galerías, GIF, Redgifs y enlaces de Imgur
+• Vídeos con sonido: Reddit guarda el audio en un archivo aparte; GrabPost lo encuentra y lo une dentro de tu navegador
+• Imágenes de los comentarios, Descargar en el menú del clic derecho y Alt+Shift+D para la publicación del centro de la pantalla
+
+DESCARGA MASIVA
+• El modo rápido lee un subreddit, perfil, multireddit o búsqueda directamente de los datos de Reddit, sin desplazarte
+• Omite lo que ya tienes y se detiene en las publicaciones descargadas antes
+• Descarga tus publicaciones guardadas de una vez (con sesión iniciada)
+• Filtro por tipo de medio y rango de fechas
+• Cuando Reddit pide una pausa, GrabPost espera lo que se le pide y continúa
+
+SIGUE SUBREDDITS Y USUARIOS
+• Comprobaciones programadas con notificaciones de escritorio y descarga automática opcional
+• Filtros por fuente: tipo de medio y palabras clave
+• Hasta 10 favoritos comprobados hasta cada 5 minutos
+• Las comprobaciones perdidas se recuperan unos minutos después de abrir el navegador
+• Exporta e importa tu lista
+
+ARCHIVOS E HISTORIAL
+• Plantillas de carpetas y nombres de archivo: {subreddit}, {user}, {date}, {title} y más
+• Detección de duplicados por el contenido de la imagen, no solo por la dirección
+• Historial con búsqueda; las publicaciones que ya tienes se marcan en Reddit
+• Funciona junto a gestores de descargas como IDM sin perder los nombres de tus carpetas
+• Copias de seguridad automáticas: reinstalar no borra tu historial
+
+PRIVACIDAD
+Sin analíticas, sin rastreo, sin cuenta, sin servidores propios. GrabPost solo habla con Reddit y con los sitios que alojan los medios que descargas. Ajustes, lista de seguimiento e historial se quedan en tu navegador.
+
+15 idiomas: English, Türkçe, Deutsch, Français, Español, Português (Brasil), Italiano, Русский, Čeština, العربية, हिन्दी, Bahasa Indonesia, 日本語, 한국어, 简体中文.
+
+Gratis. Código fuente: https://github.com/segelferd/grabpost
+GrabPost es un proyecto independiente y no está afiliado a Reddit.
+
+=== pt_br | Português (Brasil)
+SUMMARY: Botão Baixar em cada post do Reddit: imagens, galerias, vídeos com som, GIFs, Redgifs e Imgur. Baixe subreddits e perfis inteiros, siga fontes e receba os posts novos automaticamente. Sem rastreamento.
+---
+O GrabPost adiciona um botão Baixar laranja a cada post do Reddit. Um clique salva as imagens, a galeria inteira ou o vídeo com o som.
+
+UM CLIQUE EM CADA POST
+• Em feeds, perfis, resultados de busca e páginas de post, no Reddit novo e no antigo
+• Imagens, galerias, GIFs, Redgifs e links do Imgur
+• Vídeos com som: o Reddit guarda o áudio em um arquivo separado; o GrabPost encontra e junta tudo dentro do seu navegador
+• Imagens nos comentários, Baixar no menu do botão direito e Alt+Shift+D para o post no meio da tela
+
+DOWNLOAD EM MASSA
+• O modo rápido lê um subreddit, perfil, multireddit ou busca direto dos dados do Reddit, sem rolar a página
+• Pula o que você já tem e para nos posts baixados antes
+• Baixe seus posts salvos de uma vez (com login)
+• Filtro por tipo de mídia e período
+• Quando o Reddit pede uma pausa, o GrabPost espera o tempo pedido e continua
+
+SIGA SUBREDDITS E USUÁRIOS
+• Verificações agendadas com notificações na área de trabalho e download automático opcional
+• Filtros por fonte: tipo de mídia e palavras-chave
+• Até 10 favoritos verificados a cada 5 minutos, se você quiser
+• Verificações perdidas são feitas alguns minutos depois que o navegador abre
+• Exporte e importe sua lista
+
+ARQUIVOS E HISTÓRICO
+• Modelos de pasta e nome de arquivo: {subreddit}, {user}, {date}, {title} e outros
+• Detecção de duplicados pelo conteúdo da imagem, não só pelo endereço
+• Histórico com busca; os posts que você já tem ficam marcados no Reddit
+• Funciona junto com gerenciadores de download como o IDM sem perder os nomes das pastas
+• Backups automáticos: reinstalar não apaga seu histórico
+
+PRIVACIDADE
+Sem análises, sem rastreamento, sem conta, sem servidores próprios. O GrabPost só se comunica com o Reddit e com os sites que hospedam a mídia que você baixa. Configurações, lista de seguidos e histórico ficam no seu navegador.
+
+15 idiomas: English, Türkçe, Deutsch, Français, Español, Português (Brasil), Italiano, Русский, Čeština, العربية, हिन्दी, Bahasa Indonesia, 日本語, 한국어, 简体中文.
+
+Gratuito. Código-fonte: https://github.com/segelferd/grabpost
+O GrabPost é um projeto independente e não tem ligação com o Reddit.
+
+=== it | Italiano
+SUMMARY: Un pulsante Scarica su ogni post di Reddit: immagini, gallerie, video con audio, GIF, Redgifs e Imgur. Scarica subreddit e profili interi, segui le fonti e ricevi i nuovi post in automatico. Nessun tracciamento.
+---
+GrabPost aggiunge un pulsante Scarica arancione a ogni post di Reddit. Un clic salva le immagini, l'intera galleria o il video con il suo audio.
+
+UN CLIC SU OGNI POST
+• Nei feed, nei profili, nei risultati di ricerca e nelle pagine dei post, sul Reddit nuovo e su quello vecchio
+• Immagini, gallerie, GIF, Redgifs e link Imgur
+• Video con audio: Reddit tiene l'audio in un file separato; GrabPost lo trova e lo unisce direttamente nel browser
+• Immagini nei commenti, Scarica nel menu del tasto destro e Alt+Shift+D per il post al centro dello schermo
+
+DOWNLOAD IN BLOCCO
+• La modalità veloce legge subreddit, profili, multireddit o ricerche direttamente dai dati di Reddit, senza scorrere
+• Salta ciò che hai già e si ferma ai post scaricati in precedenza
+• Scarica i post salvati in un colpo solo (con accesso)
+• Filtro per tipo di media e intervallo di date
+• Quando Reddit chiede una pausa, GrabPost aspetta il tempo richiesto e prosegue
+
+SEGUI SUBREDDIT E UTENTI
+• Controlli programmati con notifiche desktop e download automatico facoltativo
+• Filtri per fonte: tipo di media e parole chiave
+• Fino a 10 preferiti controllati anche ogni 5 minuti
+• I controlli saltati vengono recuperati pochi minuti dopo l'avvio del browser
+• Esporta e importa l'elenco
+
+FILE E CRONOLOGIA
+• Modelli per cartelle e nomi dei file: {subreddit}, {user}, {date}, {title} e altri
+• Rilevamento dei duplicati in base al contenuto dell'immagine, non solo all'indirizzo
+• Cronologia con ricerca; i post che hai già sono segnalati su Reddit
+• Funziona accanto ai download manager come IDM senza perdere i nomi delle cartelle
+• Backup automatici: reinstallare non cancella la cronologia
+
+PRIVACY
+Nessuna analisi, nessun tracciamento, nessun account, nessun server nostro. GrabPost comunica solo con Reddit e con i siti che ospitano i media che scarichi. Impostazioni, elenco seguiti e cronologia restano nel tuo browser.
+
+15 lingue: English, Türkçe, Deutsch, Français, Español, Português (Brasil), Italiano, Русский, Čeština, العربية, हिन्दी, Bahasa Indonesia, 日本語, 한국어, 简体中文.
+
+Gratuito. Codice sorgente: https://github.com/segelferd/grabpost
+GrabPost è un progetto indipendente e non è affiliato a Reddit.
+
+=== ru | Русский
+SUMMARY: Кнопка «Скачать» на каждом посте Reddit: изображения, галереи, видео со звуком, GIF, Redgifs и Imgur. Массовая загрузка сабреддитов и профилей, подписки на источники и новые посты автоматически. Без отслеживания.
+---
+GrabPost добавляет оранжевую кнопку «Скачать» к каждому посту Reddit. Один клик сохраняет изображения, всю галерею или видео вместе со звуком.
+
+ОДИН КЛИК НА КАЖДОМ ПОСТЕ
+• В лентах, профилях, результатах поиска и на страницах постов, в новом и старом Reddit
+• Изображения, галереи, GIF, Redgifs и ссылки Imgur
+• Видео со звуком: Reddit хранит звук в отдельном файле; GrabPost находит его и склеивает прямо в браузере
+• Изображения в комментариях, пункт «Скачать» в контекстном меню и Alt+Shift+D для поста в центре экрана
+
+МАССОВАЯ ЗАГРУЗКА
+• Быстрый режим читает сабреддит, профиль, мультиреддит или поиск прямо из данных Reddit, без прокрутки
+• Пропускает то, что у вас уже есть, и останавливается на ранее скачанных постах
+• Сохранённые посты одним действием (при входе в аккаунт)
+• Фильтр по типу медиа и диапазону дат
+• Когда Reddit просит паузу, GrabPost ждёт ровно столько, сколько нужно, и продолжает
+
+ПОДПИСКИ НА САБРЕДДИТЫ И ПОЛЬЗОВАТЕЛЕЙ
+• Проверки по расписанию с уведомлениями на рабочем столе, по желанию автоматическая загрузка
+• Фильтры для каждого источника: тип медиа и ключевые слова
+• До 10 избранных с проверкой вплоть до каждых 5 минут
+• Пропущенные проверки выполняются через пару минут после запуска браузера
+• Экспорт и импорт списка
+
+ФАЙЛЫ И ИСТОРИЯ
+• Шаблоны папок и имён файлов: {subreddit}, {user}, {date}, {title} и другие
+• Поиск дубликатов по содержимому изображения, а не только по адресу
+• История с поиском; посты, которые у вас уже есть, отмечаются на Reddit
+• Работает рядом с менеджерами загрузок вроде IDM, имена папок не теряются
+• Автоматические резервные копии: переустановка не стирает историю
+
+КОНФИДЕНЦИАЛЬНОСТЬ
+Никакой аналитики, отслеживания, аккаунтов и собственных серверов. GrabPost обращается только к Reddit и к сайтам, где лежат скачиваемые медиа. Настройки, список подписок и история остаются в вашем браузере.
+
+15 языков: English, Türkçe, Deutsch, Français, Español, Português (Brasil), Italiano, Русский, Čeština, العربية, हिन्दी, Bahasa Indonesia, 日本語, 한국어, 简体中文.
+
+Бесплатно. Исходный код: https://github.com/segelferd/grabpost
+GrabPost является независимым проектом и не связан с Reddit.
+
+=== cs | Čeština
+SUMMARY: Tlačítko Stáhnout u každého příspěvku na Redditu: obrázky, galerie, videa se zvukem, GIFy, Redgifs a Imgur. Hromadné stahování subredditů a profilů, sledování zdrojů a nové příspěvky automaticky. Bez sledování.
+---
+GrabPost přidá ke každému příspěvku na Redditu oranžové tlačítko Stáhnout. Jedním kliknutím uložíte obrázky, celou galerii nebo video i se zvukem.
+
+JEDNO KLIKNUTÍ U KAŽDÉHO PŘÍSPĚVKU
+• Ve feedech, profilech, výsledcích hledání i na stránkách příspěvků, na novém i starém Redditu
+• Obrázky, galerie, GIFy, Redgifs a odkazy Imgur
+• Videa se zvukem: Reddit ukládá zvuk do samostatného souboru; GrabPost ho najde a spojí přímo ve vašem prohlížeči
+• Obrázky v komentářích, Stáhnout v nabídce pravého tlačítka a Alt+Shift+D pro příspěvek uprostřed obrazovky
+
+HROMADNÉ STAHOVÁNÍ
+• Rychlý režim čte subreddit, profil, multireddit nebo hledání přímo z dat Redditu, bez posouvání
+• Přeskočí, co už máte, a zastaví se u dříve stažených příspěvků
+• Uložené příspěvky najednou (po přihlášení)
+• Filtr podle typu médií a období
+• Když Reddit požádá o pauzu, GrabPost počká přesně tak dlouho a pokračuje
+
+SLEDOVÁNÍ SUBREDDITŮ A UŽIVATELŮ
+• Plánované kontroly s oznámeními na ploše, volitelně automatické stahování
+• Filtry pro každý zdroj: typ médií a klíčová slova
+• Až 10 oblíbených s kontrolou až každých 5 minut
+• Zmeškané kontroly se doženou pár minut po spuštění prohlížeče
+• Export a import seznamu
+
+SOUBORY A HISTORIE
+• Šablony složek a názvů souborů: {subreddit}, {user}, {date}, {title} a další
+• Rozpoznání duplikátů podle obsahu obrázku, nejen podle adresy
+• Historie s vyhledáváním; příspěvky, které už máte, jsou na Redditu označené
+• Funguje vedle správců stahování jako IDM, názvy složek se neztratí
+• Automatické zálohy: přeinstalace historii nesmaže
+
+SOUKROMÍ
+Žádná analytika, žádné sledování, žádný účet, žádné vlastní servery. GrabPost komunikuje jen s Redditem a s weby, které hostují stahovaná média. Nastavení, seznam sledovaných a historie zůstávají ve vašem prohlížeči.
+
+15 jazyků: English, Türkçe, Deutsch, Français, Español, Português (Brasil), Italiano, Русский, Čeština, العربية, हिन्दी, Bahasa Indonesia, 日本語, 한국어, 简体中文.
+
+Zdarma. Zdrojový kód: https://github.com/segelferd/grabpost
+GrabPost je nezávislý projekt a není spojen s Redditem.
+
+=== ar | العربية
+SUMMARY: زر تنزيل بنقرة واحدة على كل منشور في Reddit: الصور والمعارض ومقاطع الفيديو بالصوت وGIF وRedgifs وImgur. نزّل مجتمعات وملفات شخصية كاملة، وتابع المصادر لتصلك المنشورات الجديدة تلقائيًا. بلا تتبع.
+---
+يضيف GrabPost زر تنزيل برتقاليًا إلى كل منشور في Reddit. بنقرة واحدة تحفظ صور المنشور أو المعرض كاملًا أو الفيديو مع صوته.
+
+نقرة واحدة على كل منشور
+• في الصفحات الرئيسية والملفات الشخصية ونتائج البحث وصفحات المنشورات، في Reddit الجديد والقديم
+• الصور والمعارض وGIF وRedgifs وروابط Imgur
+• فيديو بالصوت: يحفظ Reddit الصوت في ملف منفصل، فيجده GrabPost ويدمجه داخل متصفحك
+• صور التعليقات، وأمر تنزيل في قائمة النقر الأيمن، واختصار Alt+Shift+D للمنشور في منتصف الشاشة
+
+التنزيل الجماعي
+• الوضع السريع يقرأ المجتمع أو الملف الشخصي أو المجتمعات المتعددة أو البحث مباشرة من بيانات Reddit دون تمرير
+• يتخطى ما لديك ويتوقف عند المنشورات التي نزّلتها من قبل
+• نزّل منشوراتك المحفوظة دفعة واحدة (عند تسجيل الدخول)
+• تصفية حسب نوع الوسائط ونطاق التاريخ
+• عندما يطلب Reddit استراحة، ينتظر GrabPost المدة المطلوبة ثم يكمل
+
+متابعة المجتمعات والمستخدمين
+• فحوص مجدولة مع إشعارات على سطح المكتب وتنزيل تلقائي اختياري
+• مرشحات لكل مصدر: نوع الوسائط والكلمات المفتاحية
+• حتى 10 مفضلات تُفحص كل 5 دقائق إن أردت
+• الفحوص الفائتة تُستكمل بعد دقائق من فتح المتصفح
+• تصدير القائمة واستيرادها
+
+الملفات والسجل
+• قوالب للمجلدات وأسماء الملفات: {subreddit} و{user} و{date} و{title} وغيرها
+• كشف التكرار حسب محتوى الصورة لا عنوانها فقط
+• سجل قابل للبحث، والمنشورات الموجودة لديك تظهر عليها علامة في Reddit
+• يعمل بجانب برامج إدارة التنزيل مثل IDM دون أن تضيع أسماء مجلداتك
+• نسخ احتياطية تلقائية، فإعادة التثبيت لا تمسح سجلك
+
+الخصوصية
+لا تحليلات ولا تتبع ولا حساب ولا خوادم خاصة بنا. يتواصل GrabPost مع Reddit والمواقع التي تستضيف الوسائط التي تنزّلها فقط. تبقى الإعدادات وقائمة المتابعة والسجل في متصفحك.
+
+15 لغة: English، Türkçe، Deutsch، Français، Español، Português (Brasil)، Italiano، Русский، Čeština، العربية، हिन्दी، Bahasa Indonesia، 日本語، 한국어، 简体中文.
+
+مجاني. الشيفرة المصدرية: https://github.com/segelferd/grabpost
+GrabPost مشروع مستقل ولا علاقة له بـ Reddit.
+
+=== hi | हिन्दी
+SUMMARY: हर Reddit पोस्ट पर एक क्लिक वाला डाउनलोड बटन: इमेज, गैलरी, आवाज़ वाले वीडियो, GIF, Redgifs और Imgur। पूरे सबरेडिट और प्रोफ़ाइल एक साथ डाउनलोड करें, स्रोत फ़ॉलो करें, नई पोस्ट अपने आप पाएँ। कोई ट्रैकिंग नहीं।
+---
+GrabPost हर Reddit पोस्ट पर एक नारंगी डाउनलोड बटन जोड़ता है। एक क्लिक में पोस्ट की इमेज, पूरी गैलरी या आवाज़ के साथ वीडियो सेव हो जाता है।
+
+हर पोस्ट पर एक क्लिक
+• फ़ीड, प्रोफ़ाइल, सर्च नतीजों और पोस्ट पेज पर, नए और पुराने दोनों Reddit पर
+• इमेज, गैलरी, GIF, Redgifs और Imgur लिंक
+• आवाज़ वाले वीडियो: Reddit आवाज़ को अलग फ़ाइल में रखता है; GrabPost उसे ढूँढकर आपके ब्राउज़र में ही वीडियो से जोड़ देता है
+• कमेंट की इमेज, राइट-क्लिक मेन्यू में डाउनलोड, और स्क्रीन के बीच वाली पोस्ट के लिए Alt+Shift+D
+
+बल्क डाउनलोड
+• फ़ास्ट मोड सबरेडिट, प्रोफ़ाइल, मल्टीरेडिट या सर्च को स्क्रॉल किए बिना सीधे Reddit के डेटा से पढ़ता है
+• जो आपके पास है उसे छोड़ देता है और पहले डाउनलोड की गई पोस्ट पर रुक जाता है
+• अपनी सेव की गई पोस्ट एक बार में डाउनलोड करें (लॉग इन होने पर)
+• मीडिया टाइप और तारीख की सीमा से फ़िल्टर
+• जब Reddit रुकने को कहता है, GrabPost उतनी ही देर इंतज़ार करके आगे बढ़ता है
+
+सबरेडिट और यूज़र फ़ॉलो करें
+• तय समय पर जाँच, डेस्कटॉप सूचनाएँ, चाहें तो अपने आप डाउनलोड
+• हर स्रोत के लिए फ़िल्टर: मीडिया टाइप और कीवर्ड
+• 10 तक पसंदीदा, जिन्हें हर 5 मिनट तक में जाँचा जा सकता है
+• छूटी हुई जाँचें ब्राउज़र खुलने के कुछ मिनट बाद अपने आप हो जाती हैं
+• सूची एक्सपोर्ट और इंपोर्ट करें
+
+फ़ाइलें और इतिहास
+• फ़ोल्डर और फ़ाइल नाम के टेम्पलेट: {subreddit}, {user}, {date}, {title} और भी
+• डुप्लिकेट की पहचान इमेज की सामग्री से, सिर्फ़ पते से नहीं
+• खोजने योग्य इतिहास; जो पोस्ट आपके पास हैं वे Reddit पर चिह्नित दिखती हैं
+• IDM जैसे डाउनलोड मैनेजर के साथ काम करता है, फ़ोल्डर के नाम नहीं खोते
+• अपने आप बैकअप, इसलिए दोबारा इंस्टॉल करने पर इतिहास नहीं मिटता
+
+निजता
+कोई एनालिटिक्स नहीं, कोई ट्रैकिंग नहीं, कोई खाता नहीं, हमारा कोई सर्वर नहीं। GrabPost सिर्फ़ Reddit और उन साइटों से बात करता है जहाँ आपका डाउनलोड किया मीडिया रखा है। सेटिंग्स, फ़ॉलो सूची और इतिहास आपके ब्राउज़र में ही रहते हैं।
+
+15 भाषाएँ: English, Türkçe, Deutsch, Français, Español, Português (Brasil), Italiano, Русский, Čeština, العربية, हिन्दी, Bahasa Indonesia, 日本語, 한국어, 简体中文।
+
+मुफ़्त। सोर्स कोड: https://github.com/segelferd/grabpost
+GrabPost एक स्वतंत्र प्रोजेक्ट है और इसका Reddit से कोई संबंध नहीं है।
+
+=== id | Bahasa Indonesia
+SUMMARY: Tombol Unduh sekali klik di setiap postingan Reddit: gambar, galeri, video bersuara, GIF, Redgifs, dan Imgur. Unduh subreddit dan profil sekaligus, ikuti sumber, dan postingan baru datang otomatis. Tanpa pelacakan.
+---
+GrabPost menambahkan tombol Unduh berwarna oranye di setiap postingan Reddit. Sekali klik, gambar, seluruh galeri, atau video beserta suaranya langsung tersimpan.
+
+SEKALI KLIK DI SETIAP POSTINGAN
+• Di feed, profil, hasil pencarian, dan halaman postingan, di Reddit baru maupun lama
+• Gambar, galeri, GIF, Redgifs, dan tautan Imgur
+• Video bersuara: Reddit menyimpan suara di file terpisah; GrabPost menemukannya dan menggabungkannya langsung di browser Anda
+• Gambar di komentar, Unduh di menu klik kanan, dan Alt+Shift+D untuk postingan di tengah layar
+
+UNDUH MASSAL
+• Mode cepat membaca subreddit, profil, multireddit, atau pencarian langsung dari data Reddit, tanpa menggulir
+• Melewati yang sudah Anda punya dan berhenti di postingan yang pernah diunduh
+• Unduh postingan tersimpan sekaligus (saat masuk)
+• Filter jenis media dan rentang tanggal
+• Saat Reddit meminta jeda, GrabPost menunggu selama yang diminta lalu melanjutkan
+
+IKUTI SUBREDDIT DAN PENGGUNA
+• Pemeriksaan terjadwal dengan notifikasi desktop, unduh otomatis jika diinginkan
+• Filter per sumber: jenis media dan kata kunci
+• Hingga 10 favorit yang bisa diperiksa sesering setiap 5 menit
+• Pemeriksaan yang terlewat dikejar beberapa menit setelah browser dibuka
+• Ekspor dan impor daftar
+
+FILE DAN RIWAYAT
+• Template folder dan nama file: {subreddit}, {user}, {date}, {title}, dan lainnya
+• Deteksi duplikat berdasarkan isi gambar, bukan hanya alamatnya
+• Riwayat yang bisa dicari; postingan yang sudah Anda punya ditandai di Reddit
+• Bekerja berdampingan dengan pengelola unduhan seperti IDM tanpa kehilangan nama folder
+• Cadangan otomatis, jadi pasang ulang tidak menghapus riwayat Anda
+
+PRIVASI
+Tanpa analitik, tanpa pelacakan, tanpa akun, tanpa server milik kami. GrabPost hanya berkomunikasi dengan Reddit dan situs yang menyimpan media yang Anda unduh. Pengaturan, daftar ikuti, dan riwayat tetap di browser Anda.
+
+15 bahasa: English, Türkçe, Deutsch, Français, Español, Português (Brasil), Italiano, Русский, Čeština, العربية, हिन्दी, Bahasa Indonesia, 日本語, 한국어, 简体中文.
+
+Gratis. Kode sumber: https://github.com/segelferd/grabpost
+GrabPost adalah proyek independen dan tidak berafiliasi dengan Reddit.
+
+=== ja | 日本語
+SUMMARY: Reddit のすべての投稿にワンクリックのダウンロードボタン。画像、ギャラリー、音声付き動画、GIF、Redgifs、Imgur に対応。サブレディットやプロフィールの一括ダウンロード、フォローで新着も自動で届きます。トラッキングなし。
+---
+GrabPost は Reddit のすべての投稿にオレンジ色のダウンロードボタンを追加します。ワンクリックで投稿の画像、ギャラリー全体、音声付きの動画を保存できます。
+
+すべての投稿でワンクリック
+• フィード、プロフィール、検索結果、投稿ページで使えます。新しい Reddit と旧 Reddit の両方に対応
+• 画像、ギャラリー、GIF、Redgifs、Imgur のリンク
+• 音声付き動画：Reddit は音声を別ファイルで保存しています。GrabPost がそれを見つけ、ブラウザの中で動画と結合します
+• コメント内の画像、右クリックメニューのダウンロード、画面中央の投稿を保存する Alt+Shift+D
+
+一括ダウンロード
+• 高速モードはサブレディット、プロフィール、マルチレディット、検索を Reddit のデータから直接読み込みます。スクロールは不要です
+• すでにあるものは飛ばし、以前ダウンロードした投稿に着いたら止まります
+• 保存済みの投稿もまとめてダウンロード（ログイン時）
+• メディアの種類と期間で絞り込み
+• Reddit から休止を求められたら、GrabPost は指定された時間だけ待って続けます
+
+サブレディットとユーザーのフォロー
+• 定期チェックとデスクトップ通知、必要なら自動ダウンロード
+• ソースごとのフィルター：メディアの種類とキーワード
+• お気に入りは最大 10 件、最短 5 分ごとにチェック
+• 見逃したチェックはブラウザ起動の数分後に自動で実行
+• リストのエクスポートとインポート
+
+ファイルと履歴
+• フォルダ名とファイル名のテンプレート：{subreddit}、{user}、{date}、{title} など
+• アドレスだけでなく画像の内容で重複を判定
+• 検索できる履歴。手元にある投稿は Reddit 上で印が付きます
+• IDM などのダウンロードマネージャーと併用しても、フォルダ名が失われません
+• 自動バックアップで、再インストールしても履歴は消えません
+
+プライバシー
+分析なし、トラッキングなし、アカウント不要、独自サーバーなし。GrabPost が通信するのは Reddit と、ダウンロードするメディアを置いているサイトだけです。設定、フォローリスト、履歴はブラウザの中に残ります。
+
+15 言語：English、Türkçe、Deutsch、Français、Español、Português (Brasil)、Italiano、Русский、Čeština、العربية、हिन्दी、Bahasa Indonesia、日本語、한국어、简体中文
+
+無料。ソースコード：https://github.com/segelferd/grabpost
+GrabPost は独立したプロジェクトで、Reddit とは関係ありません。
+
+=== ko | 한국어
+SUMMARY: 모든 Reddit 게시물에 원클릭 다운로드 버튼. 이미지, 갤러리, 소리 있는 동영상, GIF, Redgifs, Imgur 지원. 서브레딧과 프로필 일괄 다운로드, 소스를 팔로우하면 새 게시물이 자동으로 옵니다. 추적 없음.
+---
+GrabPost는 모든 Reddit 게시물에 주황색 다운로드 버튼을 추가합니다. 한 번 클릭하면 게시물의 이미지, 갤러리 전체, 소리가 포함된 동영상이 저장됩니다.
+
+모든 게시물에서 원클릭
+• 피드, 프로필, 검색 결과, 게시물 페이지에서 작동하며 새 Reddit과 구 Reddit 모두 지원
+• 이미지, 갤러리, GIF, Redgifs, Imgur 링크
+• 소리 있는 동영상: Reddit은 소리를 별도 파일에 저장합니다. GrabPost가 이를 찾아 브라우저 안에서 합칩니다
+• 댓글 이미지, 우클릭 메뉴의 다운로드, 화면 가운데 게시물을 받는 Alt+Shift+D
+
+일괄 다운로드
+• 빠른 모드는 서브레딧, 프로필, 멀티레딧, 검색을 스크롤 없이 Reddit 데이터에서 바로 읽습니다
+• 이미 있는 것은 건너뛰고 예전에 받은 게시물에서 멈춥니다
+• 저장한 게시물을 한 번에 다운로드 (로그인 시)
+• 미디어 유형과 기간으로 필터
+• Reddit이 잠시 멈춰 달라고 하면 GrabPost는 요청한 시간만큼 기다렸다가 이어갑니다
+
+서브레딧과 사용자 팔로우
+• 예약 확인과 데스크톱 알림, 원하면 자동 다운로드
+• 소스별 필터: 미디어 유형과 키워드
+• 즐겨찾기 최대 10개, 최소 5분마다 확인
+• 놓친 확인은 브라우저를 켠 뒤 몇 분 안에 자동으로 실행
+• 목록 내보내기와 가져오기
+
+파일과 기록
+• 폴더와 파일 이름 템플릿: {subreddit}, {user}, {date}, {title} 등
+• 주소뿐 아니라 이미지 내용으로 중복 판별
+• 검색 가능한 기록. 이미 가진 게시물은 Reddit에 표시됩니다
+• IDM 같은 다운로드 관리자와 함께 써도 폴더 이름이 사라지지 않습니다
+• 자동 백업으로 다시 설치해도 기록이 지워지지 않습니다
+
+개인정보
+분석 없음, 추적 없음, 계정 없음, 자체 서버 없음. GrabPost는 Reddit과 다운로드하는 미디어를 호스팅하는 사이트하고만 통신합니다. 설정, 팔로우 목록, 기록은 브라우저 안에 남습니다.
+
+15개 언어: English, Türkçe, Deutsch, Français, Español, Português (Brasil), Italiano, Русский, Čeština, العربية, हिन्दी, Bahasa Indonesia, 日本語, 한국어, 简体中文
+
+무료. 소스 코드: https://github.com/segelferd/grabpost
+GrabPost는 독립 프로젝트이며 Reddit과 관련이 없습니다.
+
+=== zh_cn | 简体中文
+SUMMARY: 每个 Reddit 帖子都有一键下载按钮：图片、图集、带声音的视频、GIF、Redgifs 和 Imgur。批量下载整个子版块和个人主页，关注来源后新帖子自动送达。无追踪。
+---
+GrabPost 会在每个 Reddit 帖子上加一个橙色的下载按钮。点一下就能保存帖子里的图片、整个图集，或带声音的视频。
+
+每个帖子一键下载
+• 首页信息流、个人主页、搜索结果和帖子页面都能用，新版和旧版 Reddit 都支持
+• 图片、图集、GIF、Redgifs 和 Imgur 链接
+• 带声音的视频：Reddit 把声音放在单独的文件里，GrabPost 会找到它并直接在浏览器中合并
+• 评论中的图片、右键菜单里的下载，以及下载屏幕中间帖子的 Alt+Shift+D
+
+批量下载
+• 快速模式直接从 Reddit 数据读取子版块、个人主页、多版块或搜索结果，无需滚动
+• 跳过已有的内容，遇到以前下载过的帖子就停下
+• 一次下载你收藏的帖子（需登录）
+• 按媒体类型和日期范围筛选
+• Reddit 要求暂停时，GrabPost 会按要求的时间等待，然后继续
+
+关注子版块和用户
+• 定时检查，桌面通知，可选自动下载
+• 每个来源单独筛选：媒体类型和关键词
+• 最多 10 个收藏，最快每 5 分钟检查一次
+• 错过的检查会在浏览器启动几分钟后自动补上
+• 列表可导出和导入
+
+文件和历史记录
+• 文件夹和文件名模板：{subreddit}、{user}、{date}、{title} 等
+• 按图片内容识别重复，而不只是看地址
+• 可搜索的历史记录；已经拥有的帖子会在 Reddit 上标出
+• 可与 IDM 等下载管理器共存，文件夹名称不会丢失
+• 自动备份，重新安装也不会清空历史记录
+
+隐私
+无分析、无追踪、无需账号、没有我们自己的服务器。GrabPost 只与 Reddit 以及托管你所下载媒体的网站通信。设置、关注列表和历史记录都留在你的浏览器里。
+
+15 种语言：English、Türkçe、Deutsch、Français、Español、Português (Brasil)、Italiano、Русский、Čeština、العربية、हिन्दी、Bahasa Indonesia、日本語、한국어、简体中文
+
+免费。源代码：https://github.com/segelferd/grabpost
+GrabPost 是独立项目，与 Reddit 无关。

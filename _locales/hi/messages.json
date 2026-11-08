@@ -1,0 +1,11 @@
+{
+  "appName": {
+    "message": "GrabPost - Reddit डाउनलोडर"
+  },
+  "appDescription": {
+    "message": "Reddit पोस्ट पर एक क्लिक डाउनलोड बटन: इमेज, गैलरी, आवाज़ वाले वीडियो, Redgifs। बल्क डाउनलोड, सबरेडिट फ़ॉलो करें।"
+  },
+  "cmdFocused": {
+    "message": "स्क्रीन के बीच वाली पोस्ट डाउनलोड करें"
+  }
+}

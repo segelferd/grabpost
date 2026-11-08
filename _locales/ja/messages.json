@@ -1,0 +1,11 @@
+{
+  "appName": {
+    "message": "GrabPost - Reddit ダウンローダー"
+  },
+  "appDescription": {
+    "message": "Reddit の投稿にワンクリックのダウンロードボタン。画像、ギャラリー、音声付き動画、Redgifs。一括ダウンロードとフォロー機能。"
+  },
+  "cmdFocused": {
+    "message": "画面中央の投稿をダウンロード"
+  }
+}

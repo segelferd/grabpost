@@ -1,8 +1,9 @@
 {
    "manifest_version": 3,
-   "name": "GrabPost - Downloader for Reddit",
-   "description": "Download images, videos and galleries from Reddit posts, including Redgifs.",
-   "version": "1.50.3",
+   "name": "__MSG_appName__",
+   "description": "__MSG_appDescription__",
+   "default_locale": "en",
+   "version": "1.50.4",
    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmsjIusCh5cT9u2zeKAr7s8MbvGlyNTfKzxcR/n7uV8t1QaelDFqUiN2EtvsgL35PkW/daljXIxbBUTwjpQnxJ2H3VyVLKNvPd4GTvph2ed9OMZxzM87ATT07lyAxs/ZDZ8zEuKw8xJ9QlPyiDij89Ex5G4d/Y60+L479JuI0tvvqu5oiM6NYlNeowOxwEWptB05cWd8NmF9Y64VLtuuk+QYIobi3xSGD8xTQDECSz6QamUSl1fyb6SxZlmj4q79xML02FSV65Oy4R7xM4hKuVzOnVHpeoJdjAtTO3UH9JRORhiwJBybmMEuD9yr2SgBPbYJTuMc3zIcrluIiKnHLZQIDAQAB",
    "icons": {
       "16": "icons/16.png",
@@ -74,7 +75,7 @@
          "suggested_key": {
             "default": "Alt+Shift+D"
          },
-         "description": "Download the post in the middle of the screen"
+         "description": "__MSG_cmdFocused__"
       }
    },
    "optional_permissions": [

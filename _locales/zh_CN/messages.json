@@ -1,0 +1,11 @@
+{
+  "appName": {
+    "message": "GrabPost - Reddit 下载器"
+  },
+  "appDescription": {
+    "message": "在 Reddit 帖子上一键下载：图片、图集、带声音的视频、Redgifs。批量下载，关注子版块。"
+  },
+  "cmdFocused": {
+    "message": "下载屏幕中间的帖子"
+  }
+}

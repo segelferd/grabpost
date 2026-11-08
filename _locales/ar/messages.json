@@ -1,0 +1,11 @@
+{
+  "appName": {
+    "message": "GrabPost - أداة تنزيل لـ Reddit"
+  },
+  "appDescription": {
+    "message": "زر تنزيل على منشورات Reddit: الصور والمعارض والفيديو بالصوت وRedgifs. تنزيل جماعي ومتابعة المجتمعات."
+  },
+  "cmdFocused": {
+    "message": "تنزيل المنشور في منتصف الشاشة"
+  }
+}

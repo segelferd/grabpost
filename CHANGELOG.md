@@ -2,6 +2,9 @@
 
 Her düzeltme kendi sürüm numarasını aldı. En yeni en üstte.
 
+## v1.50.5
+- Aynı medyayı tekrar indirme artık videolarda da çalışıyor (aynı v.redd.it/Redgifs/Imgur kimliği ya da aynı boyut + ilk 1 MB); parmak izi dosya inmeye başlayınca kaydediliyor, yarıda kalan indirme kopya sayılmıyor; ayar açıklaması 15 dilde güncellendi
+
 ## v1.50.4
 - Mağaza için eklenti adı, kısa açıklama ve kısayol açıklaması 15 dilde (_locales); Chrome Web Mağazası ve AMO'da dil bazlı açıklama yüklenebiliyor. Mağaza görselleri ve metinleri tools/store altında
 

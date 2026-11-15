@@ -140,6 +140,23 @@ export function markMediaHashSeen(hash) {
   });
 }
 
+/** v1.50.5: İndirmesi yarıda kalan dosyanın parmak izlerini geri alır (tekrar denenince kopya sayılmasın). */
+export function forgetMediaFingerprints(hashes = [], dhash = null) {
+  return withStorageLock(async () => {
+    const all = await chrome.storage.local.get(["downloadedMediaHashes", "downloadedPerceptualHashes"]);
+    const toSet = {};
+    if (hashes.length && all.downloadedMediaHashes?.length) {
+      toSet.downloadedMediaHashes = all.downloadedMediaHashes.filter((h) => !hashes.includes(h));
+      memoryCache.downloadedMediaHashes = toSet.downloadedMediaHashes;
+    }
+    if (dhash && all.downloadedPerceptualHashes?.length) {
+      toSet.downloadedPerceptualHashes = all.downloadedPerceptualHashes.filter((h) => h !== dhash);
+      memoryCache.downloadedPerceptualHashes = toSet.downloadedPerceptualHashes;
+    }
+    if (Object.keys(toSet).length) await chrome.storage.local.set(toSet);
+  });
+}
+
 /**
  * "Algısal parmak izi" (perceptual hash / dHash): görselin küçük, bulanık
  * bir örneğinden üretilir. İki hash arasındaki fark (Hamming mesafesi)

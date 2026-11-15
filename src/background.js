@@ -27,6 +27,7 @@ import {
   markMediaHashSeen,
   findSimilarPerceptualHash,
   markPerceptualHashSeen,
+  forgetMediaFingerprints,
 } from "./storage.js";
 import { buildFilePath } from "./utils.js";
 import { extractMediaFromPostData, postHasMedia } from "./media.js";
@@ -71,6 +72,33 @@ if (chrome.sidePanel?.setPanelBehavior) {
 }
 
 /** urls+title'dan basit bir tekrar-indirmeyi-önleme anahtarı üretir. */
+/**
+ * v1.50.5: Bir videonun "aynı video mu" anahtarları.
+ *  - vid:<kaynak>:<id>  Aynı yüklemenin farklı kalite/adresleri (crosspost'lar
+ *    aynı v.redd.it kimliğini taşır, DASH_720 / DASH_480 farkı önemsiz).
+ *  - vfp:<boyut>:<ilk 1 MB SHA-256>  Aynı dosyanın başka kimlikle yeniden
+ *    yüklenmesi (offscreen'de, videonun sadece ilk 1 MB'ı çekilerek).
+ */
+const VIDEO_ID_PATTERNS = [
+  [/^https?:\/\/v\.redd\.it\/([a-z0-9]+)\//i, "vreddit"],
+  [/^https?:\/\/(?:[a-z0-9-]+\.)?redgifs\.com\/([A-Za-z]+)(?:-[a-z0-9]+)?\.mp4/i, "redgifs"],
+  [/^https?:\/\/i\.imgur\.com\/([A-Za-z0-9]+)\.(?:mp4|gifv)/i, "imgur"],
+];
+async function videoDuplicateKeys(url) {
+  const keys = [];
+  for (const [pattern, tag] of VIDEO_ID_PATTERNS) {
+    const m = pattern.exec(url);
+    if (m) {
+      keys.push(`vid:${tag}:${m[1].toLowerCase()}`);
+      break;
+    }
+  }
+  const fp = await sendToOffscreen({ type: "COMPUTE_VIDEO_FINGERPRINT", videoUrl: url }, 60 * 1000);
+  if (fp?.ok && fp.headSha) keys.push(`vfp:${fp.size ?? "?"}:${fp.headSha}`);
+  else log.warn(`Video parmak izi alınamadı (sadece adres kimliği kullanılacak): ${fp?.error}`);
+  return keys;
+}
+
 function makeDedupeKey(meta, media) {
   const raw = `${meta.subreddit}|${meta.author}|${meta.title}|${media.urls[0] || ""}`;
   let hash = 0;
@@ -273,6 +301,7 @@ chrome.downloads.onChanged.addListener((delta) => {
   }
   if (state === "interrupted") {
     downloadContextById.delete(delta.id);
+    if (ctx.fingerprints) forgetMediaFingerprints(ctx.fingerprints.hashes, ctx.fingerprints.dhash).catch(() => {});
     chrome.downloads.search({ id: delta.id }).then(([item]) => {
       if (item?.error === "USER_CANCELED") return;
       recordFailure(ctx.media, ctx.meta, ctx.postId, `download_interrupted: ${item?.error || "?"}`);
@@ -441,6 +470,20 @@ async function downloadMediaInternalBody(media, meta, postId) {
   });
 
   const downloadIds = [];
+  let skippedDuplicates = 0;
+  // Bir dosyanın parmak izi, o dosya indirilmeye başladıktan sonra kaydedilir.
+  let pendingFingerprints = null;
+  const commitPendingFingerprints = () => {
+    const pending = pendingFingerprints;
+    pendingFingerprints = null;
+    if (!pending || downloadIds.length <= pending.index) return Promise.resolve();
+    const ctx = downloadContextById.get(downloadIds[pending.index]);
+    if (ctx) ctx.fingerprints = pending; // indirme yarıda kalırsa geri alınacak
+    return Promise.all([
+      ...pending.hashes.map((h) => markMediaHashSeen(h)),
+      pending.dhash ? markPerceptualHashSeen(pending.dhash) : null,
+    ]).catch((error) => log.warn("Parmak izi kaydedilemedi:", error?.message || error));
+  };
   for (let i = 0; i < media.urls.length; i++) {
     const originalUrl = media.urls[i];
     let downloadUrl = originalUrl;
@@ -491,29 +534,48 @@ async function downloadMediaInternalBody(media, meta, postId) {
     //    (görsel olarak aynı) artık offscreen'de TEK bir indirmeden birlikte
     //    hesaplanıyor. Önceden görsel 3 kez çekiliyordu (SHA, dHash, asıl
     //    indirme), şimdi 2 kez.
-    if (settings.skipDuplicateMedia && media.type !== "video") {
+    // v1.50.5: Videolar da kontrol ediliyor (bkz. videoDuplicateKeys): videonun
+    // tamamı değil sadece ilk 1 MB'ı ve boyutu okunuyor. Parmak izleri artık
+    // dosya gerçekten indirilmeye başladıktan sonra kaydediliyor; indirme
+    // başarısız olursa aynı dosya bir sonraki denemede "kopya" sayılmıyor.
+    await commitPendingFingerprints();
+    if (settings.skipDuplicateMedia) {
       let duplicate = false;
       try {
         await ensureOffscreenDocument();
-        const result = await sendToOffscreen({ type: "COMPUTE_MEDIA_HASHES", imageUrl: originalUrl }, 60 * 1000);
-        if (result?.ok) {
-          if (result.sha256 && (await isMediaHashSeen(result.sha256))) {
-            log.debug("Aynı medya (bayt bayt eşleşti) daha önce indirilmiş, atlanıyor:", originalUrl);
-            duplicate = true;
-          } else if (result.dhash && (await findSimilarPerceptualHash(result.dhash))) {
-            log.debug("Aynı medya (görsel olarak eşleşti) daha önce indirilmiş, atlanıyor:", originalUrl);
-            duplicate = true;
-          } else {
-            if (result.sha256) await markMediaHashSeen(result.sha256);
-            if (result.dhash) await markPerceptualHashSeen(result.dhash);
+        if (media.type === "video") {
+          const keys = await videoDuplicateKeys(originalUrl);
+          for (const key of keys) {
+            if (await isMediaHashSeen(key)) {
+              log.debug("Aynı video daha önce indirilmiş, atlanıyor:", originalUrl, key);
+              duplicate = true;
+              break;
+            }
           }
+          if (!duplicate) pendingFingerprints = { index: downloadIds.length, hashes: keys, dhash: null };
         } else {
-          log.warn(`Yinelenen medya kontrolü yapılamadı, yine de indiriliyor: ${result?.error}`);
+          const result = await sendToOffscreen({ type: "COMPUTE_MEDIA_HASHES", imageUrl: originalUrl }, 60 * 1000);
+          if (result?.ok) {
+            if (result.sha256 && (await isMediaHashSeen(result.sha256))) {
+              log.debug("Aynı medya (bayt bayt eşleşti) daha önce indirilmiş, atlanıyor:", originalUrl);
+              duplicate = true;
+            } else if (result.dhash && (await findSimilarPerceptualHash(result.dhash))) {
+              log.debug("Aynı medya (görsel olarak eşleşti) daha önce indirilmiş, atlanıyor:", originalUrl);
+              duplicate = true;
+            } else {
+              pendingFingerprints = { index: downloadIds.length, hashes: result.sha256 ? [result.sha256] : [], dhash: result.dhash || null };
+            }
+          } else {
+            log.warn(`Yinelenen medya kontrolü yapılamadı, yine de indiriliyor: ${result?.error}`);
+          }
         }
       } catch (error) {
         log.warn(`Yinelenen medya kontrolü başarısız, yine de indiriliyor: ${error?.message || error}`);
       }
-      if (duplicate) continue; // bu dosyayı atla, galerideki bir sonrakine geç
+      if (duplicate) {
+        skippedDuplicates++;
+        continue; // bu dosyayı atla, galerideki bir sonrakine geç
+      }
     }
 
     const audio = media.type === "video" ? audioSourcesOf(media) : null;
@@ -605,6 +667,8 @@ async function downloadMediaInternalBody(media, meta, postId) {
     }, 1000);
   }
 
+  await commitPendingFingerprints();
+
   if (settings.markDownloaded) {
     // ÖNEMLİ: postId (permalink/fullname) verilmişse onu kullanıyoruz —
     // bu, tıklamadan ÖNCE (sayfa taranırken) "bu gönderi indirilmiş mi"
@@ -620,7 +684,7 @@ async function downloadMediaInternalBody(media, meta, postId) {
   if (downloadIds.length) noteDownloadForAutoBackup();
 
   log.debug("downloadMedia finished, count:", downloadIds.length);
-  return { ok: true, count: downloadIds.length };
+  return { ok: true, count: downloadIds.length, skipped: skippedDuplicates };
 }
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {

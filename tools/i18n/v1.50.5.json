@@ -1,0 +1,17 @@
+{"skipDuplicateMediaTitle": {
+"en": "Compares content, not just the address. Images: exact copy or visually the same picture. Videos: same upload, or same size and same first 1 MB. Needs one extra small network check per file.",
+"tr": "Adrese değil içeriğe bakar. Görseller: birebir kopya ya da görsel olarak aynı resim. Videolar: aynı yükleme ya da aynı boyut ve aynı ilk 1 MB. Her dosya için küçük bir ek ağ kontrolü yapar.",
+"de": "Vergleicht den Inhalt, nicht nur die Adresse. Bilder: exakte Kopie oder optisch dasselbe Bild. Videos: derselbe Upload oder gleiche Größe und gleiches erstes 1 MB. Pro Datei eine kleine zusätzliche Netzwerkprüfung.",
+"fr": "Compare le contenu, pas seulement l'adresse. Images : copie exacte ou image visuellement identique. Vidéos : même envoi, ou même taille et même premier Mo. Une petite vérification réseau en plus par fichier.",
+"es": "Compara el contenido, no solo la dirección. Imágenes: copia exacta o imagen visualmente igual. Vídeos: misma subida, o mismo tamaño y mismo primer MB. Requiere una pequeña comprobación de red extra por archivo.",
+"pt_br": "Compara o conteúdo, não só o endereço. Imagens: cópia exata ou imagem visualmente igual. Vídeos: mesmo envio, ou mesmo tamanho e mesmo primeiro MB. Faz uma pequena verificação de rede extra por arquivo.",
+"ar": "يقارن المحتوى لا العنوان فقط. الصور: نسخة مطابقة أو صورة متطابقة بصريًا. الفيديو: الرفع نفسه، أو الحجم نفسه وأول 1 ميغابايت نفسه. يتطلب فحصًا صغيرًا إضافيًا عبر الشبكة لكل ملف.",
+"ja": "アドレスではなく内容を比較します。画像: 完全なコピー、または見た目が同じ画像。動画: 同じアップロード、またはサイズと最初の 1 MB が同じもの。ファイルごとに小さな追加のネットワーク確認が必要です。",
+"ko": "주소가 아니라 내용을 비교합니다. 이미지: 완전히 같은 파일 또는 보기에 같은 그림. 동영상: 같은 업로드, 또는 크기와 처음 1 MB가 같은 파일. 파일마다 작은 네트워크 확인이 한 번 더 필요합니다.",
+"ru": "Сравнивает содержимое, а не только адрес. Изображения: точная копия или визуально та же картинка. Видео: та же загрузка или тот же размер и тот же первый 1 МБ. Нужна одна небольшая дополнительная сетевая проверка на файл.",
+"it": "Confronta il contenuto, non solo l'indirizzo. Immagini: copia esatta o immagine visivamente uguale. Video: stesso caricamento, oppure stessa dimensione e stesso primo MB. Richiede un piccolo controllo di rete in più per file.",
+"zh_cn": "比较内容，而不只是地址。图片：完全相同的文件或看起来相同的图片。视频：同一次上传，或大小和前 1 MB 完全相同。每个文件需要一次额外的小型网络检查。",
+"cs": "Porovnává obsah, nejen adresu. Obrázky: přesná kopie nebo vizuálně stejný obrázek. Videa: stejné nahrání, nebo stejná velikost a stejný první 1 MB. U každého souboru je potřeba jedna malá síťová kontrola navíc.",
+"hi": "पते की नहीं, सामग्री की तुलना करता है। इमेज: बिल्कुल वही फ़ाइल या देखने में वही तस्वीर। वीडियो: वही अपलोड, या वही आकार और वही पहला 1 MB। हर फ़ाइल के लिए एक छोटी अतिरिक्त नेटवर्क जांच चाहिए।",
+"id": "Membandingkan isi, bukan hanya alamat. Gambar: salinan persis atau gambar yang tampak sama. Video: unggahan yang sama, atau ukuran dan 1 MB pertama yang sama. Perlu satu pemeriksaan jaringan kecil tambahan per file."
+}}

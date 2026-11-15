@@ -396,6 +396,49 @@ async function computeMediaHashes(imageUrl) {
   return { sha256, dhash };
 }
 
+/**
+ * v1.50.5: Video için ucuz parmak izi. Videonun tamamını indirmek yerine
+ * sadece ilk 1 MB'ı (Range isteği) çekilip SHA-256'sı alınıyor, dosyanın
+ * toplam boyutu da Content-Range/Content-Length'ten okunuyor. Aynı video
+ * farklı adresle (crosspost, başka subreddit'e aynı yükleme) gelse de
+ * boyut + ilk 1 MB birebir aynı olduğu için eşleşiyor.
+ * Sunucu Range'i yok sayıp 200 dönerse akış 1 MB'tan sonra kesiliyor.
+ */
+const VIDEO_FINGERPRINT_BYTES = 1024 * 1024;
+async function computeVideoFingerprint(videoUrl) {
+  const res = await fetch(videoUrl, {
+    referrer: "https://www.reddit.com/",
+    headers: { Range: `bytes=0-${VIDEO_FINGERPRINT_BYTES - 1}` },
+  });
+  if (!res.ok) throw new Error(`Video okunamadı: HTTP ${res.status}`);
+  let size = null;
+  const range = /\/(\d+)\s*$/.exec(res.headers.get("content-range") || "");
+  if (range) size = Number(range[1]);
+  else if (res.status === 200 && res.headers.get("content-length")) size = Number(res.headers.get("content-length"));
+  const reader = res.body.getReader();
+  const chunks = [];
+  let total = 0;
+  while (total < VIDEO_FINGERPRINT_BYTES) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+    total += value.length;
+  }
+  if (total >= VIDEO_FINGERPRINT_BYTES) reader.cancel().catch(() => {});
+  const head = new Uint8Array(Math.min(total, VIDEO_FINGERPRINT_BYTES));
+  let offset = 0;
+  for (const c of chunks) {
+    const part = c.subarray(0, head.length - offset);
+    head.set(part, offset);
+    offset += part.length;
+    if (offset >= head.length) break;
+  }
+  if (!head.length) throw new Error("Video boş geldi");
+  const hashBuf = await crypto.subtle.digest("SHA-256", head);
+  const sha = Array.from(new Uint8Array(hashBuf)).map((b) => b.toString(16).padStart(2, "0")).join("");
+  return { size, headSha: sha };
+}
+
 async function computeDHashFromBlob(blob) {
   const bitmap = await createImageBitmap(blob);
 
@@ -522,6 +565,8 @@ export function handleProcessingMessage(message) {
           return { ok: false, error: String(error?.message || error) };
         }
       })();
+    case "COMPUTE_VIDEO_FINGERPRINT":
+      return safe(async () => ({ ok: true, ...(await computeVideoFingerprint(message.videoUrl)) }), "Video parmak izi");
     case "COMPUTE_MEDIA_HASHES":
       return safe(async () => ({ ok: true, ...(await computeMediaHashes(message.imageUrl)) }), "Medya parmak izi");
     case "COMPUTE_PERCEPTUAL_HASH":

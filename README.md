@@ -2,7 +2,7 @@
 
 **Browser extension that adds a Download button to every Reddit post. Images, galleries, videos with sound, GIFs, Redgifs and Imgur links; bulk download of whole subreddits and profiles; follow sources and get new posts automatically. Chrome, Edge, Brave, Opera (Chromium) and Firefox.**
 
-🌐 **Website:** [segelferd.github.io/grabpost](https://segelferd.github.io/grabpost/) · **Current version:** 1.50.4 · [Changelog](CHANGELOG.md) · [Privacy policy](https://segelferd.github.io/grabpost/privacy/)
+🌐 **Website:** [segelferd.github.io/grabpost](https://segelferd.github.io/grabpost/) · **Current version:** 1.50.5 · [Changelog](CHANGELOG.md) · [Privacy policy](https://segelferd.github.io/grabpost/privacy/)
 
 ## Features
 
@@ -28,7 +28,7 @@
 
 ### 🗂 Files, history, backups
 - Folder and file name templates: `{subreddit}` `{user}` `{date}` `{timestamp}` `{title}` `{filename}`, nested folders with `/`, optional gallery subfolders
-- **Duplicate detection** by image content, not just the address
+- **Duplicate detection** by content, not just the address: images (exact or visually the same) and videos (same upload, or same size and first 1 MB)
 - **History** with search, "✓ Downloaded" badges and faded posts on Reddit
 - **Download manager (IDM) compatibility**: files are fetched by the extension and handed to the browser, so folder names survive
 - **Automatic backups** (daily and every 50 downloads) to `Downloads/GrabPost-Yedek`, restore screen on a fresh install, rebuild history from the browser's download list

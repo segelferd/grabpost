@@ -16,6 +16,8 @@ DOCS = ROOT / "docs"
 STR = pathlib.Path(__file__).resolve().parent / "strings"
 BASE = "https://segelferd.github.io/grabpost/"
 RELEASES = "https://github.com/segelferd/grabpost/releases/latest"
+CWS = "https://chromewebstore.google.com/detail/ejkhdjmfnmcjclhpecgoiabcigmmpkia"
+AMO = "https://addons.mozilla.org/firefox/addon/grabpost-downloader-for-reddit/"
 REPO = "https://github.com/segelferd/grabpost"
 BMC = "https://buymeacoffee.com/segelferd"
 
@@ -111,8 +113,8 @@ def head(L, hl, dirn, depth, url, title, desc, og):
 
 
 def stores(L, cls=""):
-    return (f'<div class="stores {cls}"><a class="store primary" href="{RELEASES}" rel="noopener">{ICON["chrome"]}<span>{E(L["cta_main"])}</span></a>'
-            f'<a class="store" href="{RELEASES}" rel="noopener">{ICON["firefox"]}<span>{E(L["cta_ff"])}</span></a></div>')
+    return (f'<div class="stores {cls}"><a class="store primary" href="{CWS}" rel="noopener">{ICON["chrome"]}<span>{E(L["cta_main"])}</span></a>'
+            f'<a class="store" href="{AMO}" rel="noopener">{ICON["firefox"]}<span>{E(L["cta_ff"])}</span></a></div>')
 
 
 def index_page(L, code, slug, hl, dirn):
@@ -125,7 +127,7 @@ def index_page(L, code, slug, hl, dirn):
     tiles = re.sub(r"\{(subreddit|user|date|title)\}", r"<code>{\1}</code>", tiles)
     faq = "".join(f'<details><summary>{E(L[f"q{i}"])}</summary><p>{E(L[f"a{i}"])}</p></details>' for i in range(1, 6))
     faq_ld = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": L[f"q{i}"], "acceptedAnswer": {"@type": "Answer", "text": L[f"a{i}"]}} for i in range(1, 6)]}, ensure_ascii=False)
-    app_ld = json.dumps({"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "GrabPost", "applicationCategory": "BrowserApplication", "operatingSystem": "Chrome, Edge, Brave, Opera", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": L["desc"], "url": url, "inLanguage": hl}, ensure_ascii=False)
+    app_ld = json.dumps({"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "GrabPost", "applicationCategory": "BrowserApplication", "operatingSystem": "Chrome, Edge, Brave, Opera, Firefox", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": L["desc"], "url": url, "inLanguage": hl}, ensure_ascii=False)
     demo_data = json.dumps({"idle": b["idle"], "loading": b["loading"], "done": b["done"], "folder": "Downloads/Reddit Downloads/",
                             "pics": [{"src": f"{r}assets/img/{p}.webp", "s": s, "t": t} for p, s, t in DEMO_PICS]}, ensure_ascii=False)
     first = DEMO_PICS[0]
@@ -152,7 +154,7 @@ def index_page(L, code, slug, hl, dirn):
 <section class="section wrap"><h2>{E(L["privacy_h"])}</h2><ul class="privacy"><li>{E(L["p1"])}</li><li>{E(L["p2"])}</li><li>{E(L["p3"])}</li><li>{E(L["p4"])}</li></ul></section>
 <section class="section wrap" id="install"><h2>{E(L["install_h"])}</h2><p class="sub">{E(L["install_sub"])}</p>
 <ol class="steps"><li>{L["s1"]}</li><li>{L["s2"]}</li><li>{L["s3"]}</li><li>{L["s4"]}</li></ol>
-<p class="note">{E(L["update_note"])}</p><p class="note">{E(L["ff_note"])}</p></section>
+<p class="note">{E(L["update_note"])}</p><p class="note"><a href="{RELEASES}" rel="noopener">{E(L["ff_note"])}</a></p></section>
 <section class="section wrap faq"><h2>{E(L["faq_h"])}</h2>{faq}</section>
 <section class="install wrap"><h2>{E(L["install_again"])}</h2>{stores(L)}<p class="soon">{E(L["cta_note"])}</p></section>
 </main>

@@ -2,7 +2,7 @@
 
 **Browser extension that adds a Download button to every Reddit post. Images, galleries, videos with sound, GIFs, Redgifs and Imgur links; bulk download of whole subreddits and profiles; follow sources and get new posts automatically. Chrome, Edge, Brave, Opera (Chromium) and Firefox.**
 
-🌐 **Website:** [segelferd.github.io/grabpost](https://segelferd.github.io/grabpost/) · **Current version:** 1.50.5 · [Changelog](CHANGELOG.md) · [Privacy policy](https://segelferd.github.io/grabpost/privacy/)
+🌐 **Website:** [segelferd.github.io/grabpost](https://segelferd.github.io/grabpost/) · **Current version:** 1.50.6 · [Changelog](CHANGELOG.md) · [Privacy policy](https://segelferd.github.io/grabpost/privacy/)
 
 ## Features
 
@@ -39,16 +39,12 @@ English, Türkçe, Deutsch, Français, Español, Português (BR), Italiano, Ру
 
 ## Install
 
-GrabPost is not in the extension stores yet.
+- **Chrome, Edge, Brave, Opera**: [Chrome Web Store](https://chromewebstore.google.com/detail/ejkhdjmfnmcjclhpecgoiabcigmmpkia)
+- **Firefox**: [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/grabpost-downloader-for-reddit/)
 
-**Chrome, Edge, Brave, Opera**
-1. Download `grabpost-vX.Y.Z.zip` from [Releases](https://github.com/segelferd/grabpost/releases/latest) and unzip it into a folder you will keep.
-2. Open `chrome://extensions` and turn on **Developer mode**.
-3. Click **Load unpacked** and choose the `grabpost` folder.
+Updates install automatically from the store.
 
-To update, replace the files in the same folder and press the reload button on the GrabPost card. The extension ID is fixed (manifest `key`), so settings and history stay.
-
-**Firefox**: `grabpost-firefox-vX.Y.Z.zip` can be loaded temporarily from `about:debugging` until the Add-ons version is published.
+Manual install: the zip files are on [Releases](https://github.com/segelferd/grabpost/releases/latest). Unzip `grabpost-vX.Y.Z.zip`, open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and choose the `grabpost` folder. A manual install is a separate copy from the store version; do not run both at once, or every post gets two buttons.
 
 ## Privacy
 

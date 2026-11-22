@@ -121,16 +121,23 @@ import { LOCALES, LANGUAGE_NAMES, SUPPORTED_LANGUAGES, detectDefaultLanguage, t,
     // --- Alt bilgi: versiyon numarası ---
     document.getElementById("versionText").textContent = `v${chrome.runtime.getManifest().version}`;
 
-    // Kaynak kod / Değerlendir linkleri: mağazada henüz yayınlanmadığımız
-    // için gerçek adresler yok — tıklanınca bilgilendirme veriyoruz.
-    document.getElementById("sourceCodeLink").addEventListener("click", (e) => {
-      e.preventDefault();
-      alert("Bu eklenti henüz bir genel kod deposunda yayınlanmadı.");
-    });
-    document.getElementById("rateExtensionLink").addEventListener("click", (e) => {
-      e.preventDefault();
-      alert("Bu eklenti henüz Chrome Web Store'da yayınlanmadı, yayınlandığında buradan değerlendirebileceksiniz.");
-    });
+    // v1.50.6: Kaynak kod ve Değerlendir bağlantıları gerçek adreslere gidiyor
+    // (önceden mağazada yokken uyarı veriyorlardı). Değerlendir, eklentinin
+    // kurulu olduğu mağazanın sayfasını açar: Firefox'ta AMO, diğerlerinde
+    // Chrome Web Mağazası (Edge, Brave, Opera da oradan kuruyor).
+    const IS_FIREFOX_PANEL = chrome.runtime.getURL("").startsWith("moz-extension://");
+    const linkTargets = {
+      sourceCodeLink: "https://github.com/segelferd/grabpost",
+      rateExtensionLink: IS_FIREFOX_PANEL
+        ? "https://addons.mozilla.org/firefox/addon/grabpost-downloader-for-reddit/"
+        : "https://chromewebstore.google.com/detail/ejkhdjmfnmcjclhpecgoiabcigmmpkia/reviews",
+    };
+    for (const [id, url] of Object.entries(linkTargets)) {
+      const a = document.getElementById(id);
+      a.href = url;
+      a.target = "_blank";
+      a.rel = "noopener";
+    }
 
     // --- Reddit gerektiren tek bölge: "Bu Sayfadaki Tüm Medyaları İndir".
     // ÖNEMLİ: Önceden bu kontrol TÜM PANELİ (Ayarlar/Geçmiş/Takip dahil)

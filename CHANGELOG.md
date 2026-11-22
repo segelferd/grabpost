@@ -2,6 +2,9 @@
 
 Her düzeltme kendi sürüm numarasını aldı. En yeni en üstte.
 
+## v1.50.6
+- Paneldeki Kaynak Kod ve Değerlendir bağlantıları çalışıyor: GitHub deposu ve eklentinin kurulduğu mağaza sayfası (Firefox'ta AMO, diğerlerinde Chrome Web Mağazası). Önceden her dilde Türkçe 'henüz yayınlanmadı' uyarısı çıkıyordu
+
 ## v1.50.5
 - Aynı medyayı tekrar indirme artık videolarda da çalışıyor (aynı v.redd.it/Redgifs/Imgur kimliği ya da aynı boyut + ilk 1 MB); parmak izi dosya inmeye başlayınca kaydediliyor, yarıda kalan indirme kopya sayılmıyor; ayar açıklaması 15 dilde güncellendi
 
